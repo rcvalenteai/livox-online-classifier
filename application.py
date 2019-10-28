@@ -26,7 +26,7 @@ list_phrase.add_argument('ngram', type=int, required=False,
 
 invocation_phrase = reqparse.RequestParser()
 invocation_phrase.add_argument('phrase', type=str, required=True,
-                               default='what would you like for dinner pizza or pasta', help='entire phrase to parse')
+                               default='what would you like for dinner dog or cat', help='entire phrase to parse')
 
 toggler = reqparse.RequestParser()
 toggler.add_argument('toggle', type=bool, required=True,
@@ -88,7 +88,7 @@ class OfflineEntityParser(Resource):
         return resp
 
 
-@api.route("/question_parser")
+@api.route("/phrase_splitter")
 class PhraseSplitter(Resource):
 
     @api.expect(invocation_phrase)
@@ -102,6 +102,26 @@ class PhraseSplitter(Resource):
         phrase = args.get('phrase')
         resp = phrase_split(phrase)
         return resp
+
+
+@api.route("/question_img_parser")
+class QuestionImageParser(Resource):
+
+    @api.expect(invocation_phrase)
+    def get(self):
+        """
+        given a phrase return the links to the image urls
+        """
+        args = invocation_phrase.parse_args(request)
+        phrase = args.get('phrase')
+        resp = phrase_split(phrase)
+        entities = offline_parse_phrase(resp[1], 2)
+        urls = list()
+        for entity in entities:
+            print(entity)
+            print(get_image(entity))
+            urls.append(get_image(entity))
+        return urls
 
 
 @api.route("/toggle")
