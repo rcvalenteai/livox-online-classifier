@@ -1,14 +1,15 @@
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+
+from labels import MySQLDB
+
+import gc
 import sys
 import gensim
 
 nltk.download('stopwords')
 nltk.download('punkt')
-
-# Load Google's pre-trained Word2Vec model.
-model = gensim.models.KeyedVectors.load_word2vec_format('./GoogleNews-vectors-negative300.bin', binary=True)
 
 
 class NGramException(Exception):
@@ -24,6 +25,50 @@ class NGramException(Exception):
         sys.stderr.write(self.message)
 
 
+class WordEmbedding(object):
+    def __init__(self):
+        self.model = []
+
+    def toggle_word_embedding(self, toggle=True, local=False):
+        if self.model == [] and toggle:
+            if local:
+                self.model = gensim.models.KeyedVectors.load_word2vec_format(
+                    './GoogleNews-vectors-negative300.bin',
+                    binary=True)
+            self.model = gensim.models.KeyedVectors.load_word2vec_format(
+                'https://elasticbeanstalk-us-east-1-362049109890.s3.amazonaws.com/GoogleNews-vectors-negative300.bin',
+                binary=True)
+            return toggle
+        elif self.model != [] and not toggle:
+            model = []
+            gc.collect()
+            return toggle
+
+
+def create_ngram_dict():
+    """
+    generates the n-gram vocabulary list
+    :return:
+    """
+    """
+    create vocabulary of compount words in the tag dataset
+    :return:
+    """
+    db = MySQLDB.init_db()
+    stmt = "SELECT DISTINCT label FROM Labels"
+    cur = db.query(stmt)
+    results = cur.fetchall()
+    vocabulary = dict()
+    counters = [0, 0, 0, 0, 0, 0, 0, 0]
+    for result in results:
+        words = result[0].split()
+        if len(words) > 1:
+            vocabulary[result[0].lower()] = 0
+            counters[len(words)] += 1
+    return vocabulary
+
+
+
 def rm_stopwords(phrase):
     """
     removes stop words from given phrase, returns tokenized list of words
@@ -32,7 +77,6 @@ def rm_stopwords(phrase):
     """
     stop_words = set(stopwords.words('english'))
     word_tokens = word_tokenize(phrase)
-
     filtered = [w for w in word_tokens if not w in stop_words]
     return filtered
 
@@ -105,16 +149,64 @@ def word2vec(w1, w2):
     w2 = w2.replace(" ", "_")
     sim_score = .20
     try:
-        sim_score = model.similarity(w1, w2)
+        sim_score = model.model.similarity(w1, w2)
     except KeyError:
         pass
     return sim_score
 
 
+def offline_ngram_dict(w1):
+    """
+    offline scoering mechanism, references dictionary of keys
+    :param w1: word to check if exists
+    :return: score of word, (1 for unigram, > 1 for identified ngrams, < 1 for unidentified ngrams)
+    """
+    size = len(w1.split())
+    score = 1
+    if size > 1:
+        if w1 in ngram_vocab.keys():
+            score += (0.10 * size)
+        else:
+            score -= (0.15 * size)
+    return score
+
+
+def offline_best_entities(ent_list):
+    """
+    find most similar batch of phrases through ngram vocabulary list scoring
+    :param ent_list: a list of all combinations of entities, list<list<str>>
+    :return: one sub-list of entities
+    :rtype: list<str>
+    """
+    scores = []
+    for entities in ent_list:
+        comb_sum = 0.0
+        for entity in entities:
+            comb_sum += offline_ngram_dict(entity)
+        scores.append(comb_sum / len(entities))
+        print(entities)
+        print(comb_sum / len(entities))
+    return ent_list[scores.index(max(scores))]
+
+
+def offline_parse_phrase(phrase, n=2):
+    """
+    parse phrase for most likely combination of entities
+    :param phrase: list phrase containing list of entities to be parsed
+    :param n: limit of ngrams to look for, 'hot dog' is a bi-gram
+    :return: list of entities
+    :rtype: list<str>
+    """
+    cleaned = rm_stopwords(phrase)
+    example = ngrams(cleaned, n)
+    combinations = entity_combination(0, len(cleaned), n, example, list())
+    return offline_best_entities(combinations)
+
+
 def best_entities(ent_list):
     """
     finds the most similar batch of phrases through cosine similarity
-    :param ent_list:
+    :param ent_list: a list of all combinations of entities, list<list<str>>
     :return: list of entities
     :rtype: list<str>
     """
@@ -152,6 +244,14 @@ def tester(phrase):
     example = ngrams(cleaned, 3)
     combinations = entity_combination(0, len(cleaned), 3, example, list())
     print(best_entities(combinations))
+
+
+# Load Google's pre-trained Word2Vec model.
+model = WordEmbedding()
+#model.toggle_word_embedding()
+
+ngram_vocab = create_ngram_dict()
+
 
 
 # tester("the hot dog the hamburger or the french fries")
