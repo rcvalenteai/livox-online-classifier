@@ -2,6 +2,7 @@ import csv
 from api.entityparser import offline_parse_phrase
 from api.entityparser import model
 from api.phraseparser import phrase_split
+from api.imagedber import get_image
 
 
 def load_csv(filename):
@@ -34,6 +35,8 @@ class Test:
         print('List:                ', resp[1])
         print('Entities:            ', self.entities)
         print('Detected Entities:   ', detected_entities)
+        for entity in detected_entities:
+            print(get_image(entity))
         return result
 
 
