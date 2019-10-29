@@ -104,7 +104,8 @@ def specngrams(words, n):
     """
     k = len(words)
     if k < n:
-        raise NGramException(n, k)
+        n = k
+        # aise NGramException(n, k)
     ngrams = []
     for i in range(k - (n - 1)):
         entity = ""
@@ -184,8 +185,8 @@ def offline_best_entities(ent_list):
         for entity in entities:
             comb_sum += offline_ngram_dict(entity)
         scores.append(comb_sum / len(entities))
-        print(entities)
-        print(comb_sum / len(entities))
+        # print(entities)
+        # print(comb_sum / len(entities))
     return ent_list[scores.index(max(scores))]
 
 

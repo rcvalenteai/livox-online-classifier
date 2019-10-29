@@ -7,9 +7,9 @@ def add_question_words():
     :return: updated_dictionary
     """
     pattern_dict = dict()
-    que_words = ['what', 'when', 'where', 'would', 'want', 'do']
-    what_words = ['for', 'want']
-    what_ptrns = [1, 0]
+    que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats']
+    what_words = ['favorite', 'for', 'want']
+    what_ptrns = [1, 1, 0]
     when_words = ['going', 'go']
     when_ptrns = [0, 0]
     where_words = ['for', 'go', 'from', 'to', 'going']
@@ -18,15 +18,15 @@ def add_question_words():
     would_ptrns = [0]
     want_words = ['have']
     want_ptrns = [0]
-    do_words = ['to', 'want']
-    do_ptrns = [1, 0]
-    second_words = [what_words, when_words, where_words, would_words, want_words, do_words]
-    patterns = [what_ptrns, when_ptrns, where_ptrns, would_ptrns, want_ptrns, do_ptrns]
+    do_words = ['go', 'to', 'want']
+    do_ptrns = [0, 1, 0]
+    second_words = [what_words, when_words, where_words, would_words, want_words, do_words, what_words]
+    patterns = [what_ptrns, when_ptrns, where_ptrns, would_ptrns, want_ptrns, do_ptrns, what_ptrns]
     for i in range(len(que_words)):
         pattern_dict[que_words[i]] = dict()
         for j in range(len(second_words[i])):
             pattern_dict[que_words[i]][second_words[i][j]] = patterns[i][j]
-    print(pattern_dict)
+    # print(pattern_dict)
     return pattern_dict
 
 
@@ -49,6 +49,6 @@ def phrase_split(phrase):
                 break
     invocation_phrase = " ".join(words[:num_offset])
     list_phrase = " ".join(words[num_offset:])
-    print(invocation_phrase)
-    print(list_phrase)
+    # print(invocation_phrase)
+    # print(list_phrase)
     return [invocation_phrase, list_phrase]

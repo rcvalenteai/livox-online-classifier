@@ -7,6 +7,7 @@ from api.entityparser import offline_parse_phrase
 from api.entityparser import model
 from api.phraseparser import phrase_split
 import mysql.connector
+import json
 
 application = Flask(__name__)
 application.config.SWAGGER_UI_DOC_EXPANSION = 'list'
@@ -22,11 +23,17 @@ list_phrase = reqparse.RequestParser()
 list_phrase.add_argument('phrase', type=str, required=True,
                          default='dog or cat', help='list phrase to pull entities from')
 list_phrase.add_argument('ngram', type=int, required=False,
-                         default=2, help='limit for ngrams to check for "hot dog" is a bi-gram; n=2')
+                         default=3, help='limit for ngrams to check for "hot dog" is a bi-gram; n=2')
+
+full_phrase = reqparse.RequestParser()
+full_phrase.add_argument('phrase', type=str, required=True,
+                         default='what would you like for dinner pizza or pasta', help='full phrase to get image entities from')
+full_phrase.add_argument('ngram', type=int, required=False,
+                         default=3, help='limit for ngrams to check for "hot dog" is a bi-gram; n=2')
 
 invocation_phrase = reqparse.RequestParser()
 invocation_phrase.add_argument('phrase', type=str, required=True,
-                               default='what would you like for dinner dog or cat', help='entire phrase to parse')
+                               default='what would you like for dinner pizza or pasta', help='entire phrase to parse')
 
 toggler = reqparse.RequestParser()
 toggler.add_argument('toggle', type=bool, required=True,
@@ -36,6 +43,29 @@ toggler.add_argument('toggle', type=bool, required=True,
 api.namespaces[0].name = 'Livox API'
 api.namespaces[0].description = 'API methods for Livox List Classifier'
 #web = api.namespace(name='Analysis API', description='API methods for the AxonBeats website', path=None)
+
+
+@api.route("/question_img_parser")
+class QuestionImageParser(Resource):
+
+    @api.expect(full_phrase)
+    def get(self):
+        """
+        given a phrase return the links to the image urls
+        """
+        args = full_phrase.parse_args(request)
+        n = args.get('ngram')
+        phrase = args.get('phrase')
+        resp = phrase_split(phrase)
+        entities = offline_parse_phrase(resp[1], n)
+        urls = list()
+        for entity in entities:
+            print(entity)
+            print(get_image(entity))
+            urls.append({'entity': entity, 'url': get_image(entity)})
+        urls = json.dumps(urls)
+        urls = json.loads(urls)
+        return urls
 
 
 @api.route("/image")
@@ -67,7 +97,7 @@ class EntityParser(Resource):
         args = list_phrase.parse_args(request)
         phrase = args.get('phrase')
         n = args.get('ngram')
-        resp = parse_phrase(phrase, n)
+        resp = offline_parse_phrase(phrase, n)
         return resp
 
 
@@ -101,27 +131,9 @@ class PhraseSplitter(Resource):
         args = invocation_phrase.parse_args(request)
         phrase = args.get('phrase')
         resp = phrase_split(phrase)
+        resp = json.dumps({'innvocation': resp[0], 'list': resp[1]})
+        resp = json.loads(resp)
         return resp
-
-
-@api.route("/question_img_parser")
-class QuestionImageParser(Resource):
-
-    @api.expect(invocation_phrase)
-    def get(self):
-        """
-        given a phrase return the links to the image urls
-        """
-        args = invocation_phrase.parse_args(request)
-        phrase = args.get('phrase')
-        resp = phrase_split(phrase)
-        entities = offline_parse_phrase(resp[1], 2)
-        urls = list()
-        for entity in entities:
-            print(entity)
-            print(get_image(entity))
-            urls.append(get_image(entity))
-        return urls
 
 
 @api.route("/toggle")
