@@ -7,6 +7,7 @@ from labels import MySQLDB
 import gc
 import sys
 import gensim
+import json
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -45,28 +46,117 @@ class WordEmbedding(object):
             return toggle
 
 
-def create_ngram_dict():
+def create_ngram_dict(n, filename='./resources/vocabulary.json', withw2v=False):
     """
-    generates the n-gram vocabulary list
-    :return:
-    """
-    """
-    create vocabulary of compount words in the tag dataset
-    :return:
+    create vocabulary of compound words in the tag dataset
+    :param n: include compound words of size greater than this number
+    :return: dictionary of vocabulary
+    :rtype: dict
     """
     db = MySQLDB.init_db()
     stmt = "SELECT DISTINCT label FROM Labels"
     cur = db.query(stmt)
     results = cur.fetchall()
     vocabulary = dict()
-    counters = [0, 0, 0, 0, 0, 0, 0, 0]
+    counters = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     for result in results:
         words = result[0].split()
-        if len(words) > 1:
+        # greater than 1 word
+        if len(words) > n:
             vocabulary[result[0].lower()] = 0
             counters[len(words)] += 1
+    if withw2v:
+        count = 0
+        model.toggle_word_embedding(local=True)
+        print("loaded")
+        for item in model.model.vocab:
+            words = item.split('_')
+            if len(words) > n:
+                if count < 5:
+                    print(" ".join(words).lower())
+                    count += 1
+                vocabulary[" ".join(words).lower()] = 0
+                try:
+                    counters[len(words)] += 1
+                except IndexError:
+                    pass
+    print(counters)
+    str_json = json.dumps(vocabulary)
+    extended_json = json.loads(str_json)
+    with open(filename, 'w') as f:
+        json.dump(extended_json, f)
     return vocabulary
 
+
+def load_ngram_dict(filename='./resources/vocabulary.json'):
+    with open(filename, 'r', encoding='utf-8') as f:
+        vocab = json.loads(f.read())
+    return vocab
+
+
+def create_extended_vocab(n, filename='./resources/extended_vocab,json'):
+    """
+    generates a list of extended vocabulary for each word in vocabulary
+    :param n: closest n similar words
+    :return: dictionary of vocabulary connected to list of words
+    :rtype: dict<str:list>
+    """
+    extended_vocab = dict()
+    vocab = load_ngram_dict()
+    print("loading word embedding")
+    model.toggle_word_embedding(local=True)
+    print("loaded word embedding")
+    count = 0
+    for word in vocab.keys():
+        if count == 0:
+            print("searching keys")
+        word2 = word.replace(" ", "_")
+        try:
+            words = model.model.similar_by_word(word2, topn=n)
+            words2 = list()
+            for w in words:
+                words2.append({'word': w[0].replace("_", " "), 'sim': w[1]})
+            extended_vocab[word] = words2
+        except KeyError:
+            pass
+        if count == 0:
+            print(extended_vocab)
+            count += 1
+    str_json = json.dumps(extended_vocab)
+    extended_json = json.loads(str_json)
+    with open(filename, 'w') as f:
+        json.dump(extended_json, f)
+
+
+def refine_extended_vocab(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        vocab = json.loads(f.read())
+    cleaned = dict()
+    for key, value in vocab.items():
+        temp = list()
+        for v in value:
+            temp.append(v['word'])
+        cleaned[key] = temp
+    str_json = json.dumps(cleaned)
+    extended_json = json.loads(str_json)
+    with open('./resources/extened-vocab-cleaned.json', 'w') as f:
+        json.dump(extended_json, f)
+
+    translate = dict()
+    translate_value = dict()
+    for key, value in vocab.items():
+        for v in value:
+            if v['word'] in translate:
+                if translate_value[v['word']] < v['sim']:
+                    translate[v['word']] = key
+                    translate_value[v['word']] = v['sim']
+            else:
+                translate[v['word']] = key
+                translate_value[v['word']] = v['sim']
+    str_json = json.dumps(translate)
+    extended_json = json.loads(str_json)
+    with open('./resources/extened-vocab-translate.json', 'w') as f:
+        json.dump(extended_json, f)
 
 
 def rm_stopwords(phrase):
@@ -251,9 +341,11 @@ def tester(phrase):
 model = WordEmbedding()
 #model.toggle_word_embedding()
 
-ngram_vocab = create_ngram_dict()
-
-
+ngram_vocab = create_ngram_dict(0)
+#ngram_vocab = create_ngram_dict(1, withw2v=True)
+create_extended_vocab(10)
+refine_extended_vocab('./resources/extended_vocab.json')
+ngram_vocab = load_ngram_dict()
 
 # tester("the hot dog the hamburger or the french fries")
 # tester("the cat golden retriever or bichon")
