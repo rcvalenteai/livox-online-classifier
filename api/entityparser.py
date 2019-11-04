@@ -343,9 +343,9 @@ model = WordEmbedding()
 
 ngram_vocab = create_ngram_dict(0)
 #ngram_vocab = create_ngram_dict(1, withw2v=True)
-create_extended_vocab(10)
-refine_extended_vocab('./resources/extended_vocab.json')
-ngram_vocab = load_ngram_dict()
+#create_extended_vocab(10)
+#refine_extended_vocab('./resources/extended_vocab.json')
+#ngram_vocab = load_ngram_dict()
 
 # tester("the hot dog the hamburger or the french fries")
 # tester("the cat golden retriever or bichon")
