@@ -2,6 +2,8 @@ import mysql.connector
 import operator
 from nltk.stem import PorterStemmer
 import json
+import datetime
+
 
 
 class MySQLDB(object):
@@ -46,6 +48,8 @@ class MySQLDB(object):
         self.conn.commit()
         self.conn.close()
 
+
+# db = MySQLDB.init_db()
 
 def not_found(keyword, db=None):
     """
@@ -161,7 +165,7 @@ def search_tags(keyword, db=None):
             image_ids_ls.append(key)
     # least tagged closest match first
     final_images = list()
-    print(image_ids_ls)
+    # print(image_ids_ls)
     for id in image_ids_ls:
         stmt = "SELECT tag FROM Tags WHERE image_id = %s"
         cur = db.insert(stmt, (id[0], ))
@@ -191,10 +195,10 @@ def search_image_word(keyword, db=None):
     results2 = search_tags(keyword, db)
     for result in results2:
         if result[0] in results.items():
-            results[result[0]] = results[result[0]] + 0.85 - (result[1] * .005)
+            results[result[0]] = results[result[0]] + 0.85 # - (result[1] * .005)
         else:
-            results[result[0]] = 0.85 - (result[1] * .005)
-        print(results[result[0]])
+            results[result[0]] = 0.85 # - (result[1] * .005)
+        #print(results[result[0]])
     try:
         max_val = max(results.items(), key=operator.itemgetter(1))
     except ValueError:
@@ -208,17 +212,35 @@ def search_image_word(keyword, db=None):
     return path[0]
 
 
-def get_image(keyword):
+def get_image(keyword, db=None):
     """
     given a keyword search for similar image in livox database
     :param keyword: entity to find image for
     :return: returns path to image
     :rtype: path (str)
     """
-    db = MySQLDB.init_db()
+    if db is None:
+        db = MySQLDB.init_db()
     try:
         path = search_image_word(keyword, db)
     except ValueError:
         path = not_found(keyword, db)
     path = "https://storage.googleapis.com/livox-images/full/" + path
     return path
+
+
+def get_image_test(keyword, db=None):
+    """
+    given a keyword search for similar image in livox database
+    :param keyword: entity to find image for
+    :return: returns path to image
+    :rtype: path (str)
+    """
+    if db is None:
+        db = MySQLDB.init_db()
+    try:
+        path = search_image_word(keyword, db)
+    except ValueError:
+        path = not_found(keyword, db)
+    path = "https://storage.googleapis.com/livox-images/full/" + path
+    return (path, db)

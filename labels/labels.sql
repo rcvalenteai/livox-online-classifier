@@ -39,6 +39,35 @@ Foreign Key -> Images.image_id
          Foreign Key (image_id) References Images(image_id)
  */
 
+/*
+Logs
+Primary Key -> log_id
+ */
+ CREATE TABLE Logs
+      (log_id VARCHAR(36),
+       phrase VARCHAR(256),
+       is_list BOOLEAN,
+       question_phrase VARCHAR(256),
+       list_phrase VARCHAR(256),
+       timestamp DATE,
+       Constraint p_key_logs Primary Key (log_id));
+
+/*
+Primary Key -> entity_id
+Foreign Key -> Logs.log_id, Image.image_id
+ */
+ CREATE TABLE Entity
+      (entity_id VARCHAR(36),
+       log_id VARCHAR(36),
+       image_id VARCHAR(36),
+       entity VARCHAR(256),
+       Constraint p_key_entity Primary Key (entity_id),
+       Foreign Key(log_id) References Logs(log_id),
+       Foreign Key(image_id) References Images(image_id));
+
+
 DROP TABLE Tags;
 DROP TABLE Images;
 DROP TABLE Labels;
+DROP TABLE Logs;
+dROP TABLE Entity;

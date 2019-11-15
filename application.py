@@ -7,6 +7,8 @@ from api.entityparser import offline_parse_phrase
 from api.entityparser import model
 from api.phraseparser import phrase_split
 import mysql.connector
+from api.tester import threaded_test_cases
+from api.tester import test_cases
 import json
 
 application = Flask(__name__)
@@ -31,13 +33,19 @@ full_phrase.add_argument('phrase', type=str, required=True,
 full_phrase.add_argument('ngram', type=int, required=False,
                          default=3, help='limit for ngrams to check for "hot dog" is a bi-gram; n=2')
 
+
+classifier_phrase = reqparse.RequestParser()
+classifier_phrase.add_argument('phrase', type=str, required=True,
+                         default='what would you like for dinner pizza or pasta', help='full phrase to get image entities from')
+
 invocation_phrase = reqparse.RequestParser()
 invocation_phrase.add_argument('phrase', type=str, required=True,
                                default='what would you like for dinner pizza or pasta', help='entire phrase to parse')
 
-toggler = reqparse.RequestParser()
-toggler.add_argument('toggle', type=bool, required=True,
-                     default=True, help='used to load word2vec into and out of memory for entity parsing')
+
+# toggler = reqparse.RequestParser()
+# toggler.add_argument('toggle', type=bool, required=True,
+#                      default=True, help='used to load word2vec into and out of memory for entity parsing')
 
 #api.namespaces.clear()
 api.namespaces[0].name = 'Livox API'
@@ -136,20 +144,34 @@ class PhraseSplitter(Resource):
         return resp
 
 
-@api.route("/toggle")
-class ToggleWordEmbedding(Resource):
+@api.route("/listclassifier")
+class ListQuestionClassifier(Resource):
 
-    @api.expect(toggler)
+    @api.expect(classifier_phrase)
     def get(self):
         """
-        toggle word2vec into and out of memory
+        classify if phrase is a list question
 
-        Word2Vec takes up 3.5 GB of memory, used for resource management on AWS
+        returns true or false if phrase is a list question
         """
-        args = toggler.parse_args(request)
-        toggle = args.get('toggle')
-        resp = model.toggle_word_embedding(toggle)
-        return resp
+        args = classifier_phrase.parse_args(request)
+        phrase = args.get('phrase')
+        que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats', 'is', 'who', 'whos', 'are', 'how']
+        words = phrase.split()
+        if 'or' in words:
+            if any(x in words for x in que_words):
+                return True
+        return False
+
+
+@api.route("/test")
+class Benchmark(Resource):
+
+    def get(self):
+        """
+        using the test cases derived from the google sheet, get performance report, this may take a few minutes
+        """
+        return threaded_test_cases()
 
 
 if __name__ == '__main__':
