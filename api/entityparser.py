@@ -11,6 +11,8 @@ import json
 
 nltk.download('stopwords')
 nltk.download('punkt')
+stop_words = set(stopwords.words('english'))
+stop_words.discard('and')
 
 
 class NGramException(Exception):
@@ -165,7 +167,7 @@ def rm_stopwords(phrase):
     :param phrase: a string containing a list of items including stop words
     :return: tokenized list of words without stop words
     """
-    stop_words = set(stopwords.words('english'))
+    phrase = phrase.replace(" and ", "_and_")
     word_tokens = word_tokenize(phrase)
     filtered = [w for w in word_tokens if not w in stop_words]
     return filtered
@@ -277,7 +279,9 @@ def offline_best_entities(ent_list):
         scores.append(comb_sum / len(entities))
         # print(entities)
         # print(comb_sum / len(entities))
-    return ent_list[scores.index(max(scores))]
+    best_comb = ent_list[scores.index(max(scores))]
+    best_comb = [comb.replace("_and_", " and ") for comb in best_comb]
+    return best_comb
 
 
 def offline_parse_phrase(phrase, n=2):
@@ -313,6 +317,7 @@ def best_entities(ent_list):
             for j in range(i+1, len(entities)):
                 sum += word2vec(entities[i], entities[j])
         scores.append((sum/div))
+    best_comb = ent_list[scores.index(max(scores))]
     return ent_list[scores.index(max(scores))]
 
 
@@ -341,7 +346,7 @@ def tester(phrase):
 model = WordEmbedding()
 #model.toggle_word_embedding()
 
-ngram_vocab = create_ngram_dict(0)
+ngram_vocab = create_ngram_dict(1)
 #ngram_vocab = create_ngram_dict(1, withw2v=True)
 #create_extended_vocab(10)
 #refine_extended_vocab('./resources/extended_vocab.json')

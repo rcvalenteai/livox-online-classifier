@@ -7,21 +7,32 @@ def add_question_words():
     :return: updated_dictionary
     """
     pattern_dict = dict()
-    que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats']
+    que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats','is', 'who', 'whos', 'are', 'how']
     what_words = ['favorite', 'for', 'want']
     what_ptrns = [1, 1, 0]
     when_words = ['going', 'go']
     when_ptrns = [0, 0]
     where_words = ['for', 'go', 'from', 'to', 'going']
     where_ptrns = [1, 0, 0, 1, 0]
-    would_words = ['rather']
-    would_ptrns = [0]
+    would_words = ['rather', 'to', 'want']
+    would_ptrns = [0, 1, 0]
     want_words = ['have']
     want_ptrns = [0]
     do_words = ['go', 'to', 'want']
     do_ptrns = [0, 1, 0]
-    second_words = [what_words, when_words, where_words, would_words, want_words, do_words, what_words]
-    patterns = [what_ptrns, when_ptrns, where_ptrns, would_ptrns, want_ptrns, do_ptrns, what_ptrns]
+    is_words = ['favorite', 'it', 'your']
+    is_ptrns = [1, 0, 1]
+    who_words = ['more', 'less']
+    who_ptrns = [0, 0]
+    whos_words = ['better', 'worse', 'faster', 'slower', 'stronger', 'weaker', 'it']
+    whos_ptrns = [1, 1, 1, 1, 1, 1, 0]
+    are_words = ['you']
+    are_ptrns = [0]
+    how_words = ['your', 'today', 'feeling']
+    how_ptrns = [1, 0, 0]
+
+    second_words = [what_words, when_words, where_words, would_words, want_words, do_words, what_words, is_words, who_words, whos_words, are_words, how_words]
+    patterns = [what_ptrns, when_ptrns, where_ptrns, would_ptrns, want_ptrns, do_ptrns, what_ptrns, is_ptrns, who_ptrns, whos_ptrns, are_ptrns, how_ptrns]
     for i in range(len(que_words)):
         pattern_dict[que_words[i]] = dict()
         for j in range(len(second_words[i])):
