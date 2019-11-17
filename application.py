@@ -5,11 +5,12 @@ from api.imagedber import get_image
 from api.entityparser import parse_phrase
 from api.entityparser import offline_parse_phrase
 from api.entityparser import model
-from api.phraseparser import phrase_split
+from api.phraseparser import phrase_split, question_classifier
 import mysql.connector
 from api.tester import threaded_test_cases
 from api.tester import test_cases
 import json
+from api.logging import Logs, Entity
 
 application = Flask(__name__)
 application.config.SWAGGER_UI_DOC_EXPANSION = 'list'
@@ -67,12 +68,17 @@ class QuestionImageParser(Resource):
         resp = phrase_split(phrase)
         entities = offline_parse_phrase(resp[1], n)
         urls = list()
+        log = Logs(phrase=phrase, is_list=question_classifier(phrase), question_phrase=resp[0], list_phrase=resp[1])
         for entity in entities:
-            print(entity)
-            print(get_image(entity))
-            urls.append({'entity': entity, 'url': get_image(entity)})
+            url = get_image(entity)
+            log.entities.append(Entity(log.log_id, url, entity))
+            # print(entity)
+            # print(get_image(entity))
+            urls.append({'entity': entity, 'url': url})
+        print(log.entities)
         urls = json.dumps(urls)
         urls = json.loads(urls)
+        log.add()
         return urls
 
 
@@ -156,12 +162,7 @@ class ListQuestionClassifier(Resource):
         """
         args = classifier_phrase.parse_args(request)
         phrase = args.get('phrase')
-        que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats', 'is', 'who', 'whos', 'are', 'how']
-        words = phrase.split()
-        if 'or' in words:
-            if any(x in words for x in que_words):
-                return True
-        return False
+        return question_classifier(phrase)
 
 
 @api.route("/test")
