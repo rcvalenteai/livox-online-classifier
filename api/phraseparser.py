@@ -63,3 +63,12 @@ def phrase_split(phrase):
     # print(invocation_phrase)
     # print(list_phrase)
     return [invocation_phrase, list_phrase]
+
+
+def question_classifier(phrase):
+    que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats', 'is', 'who', 'whos', 'are', 'how']
+    words = phrase.split()
+    if 'or' in words:
+        if any(x in words for x in que_words):
+            return True
+    return False
