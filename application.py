@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from flask_restplus import Resource, Api, reqparse, fields
+from flask_restplus import inputs
 from flask_cors import CORS
 from api.imagedber import get_image
 from api.entityparser import parse_phrase
@@ -33,6 +34,8 @@ full_phrase.add_argument('phrase', type=str, required=True,
                          default='what would you like for dinner pizza or pasta', help='full phrase to get image entities from')
 full_phrase.add_argument('ngram', type=int, required=False,
                          default=3, help='limit for ngrams to check for "hot dog" is a bi-gram; n=2')
+full_phrase.add_argument('local', type=inputs.boolean, required=False, default='false',
+                         help='specify True to remove google cloud image retrieval prefix')
 
 
 classifier_phrase = reqparse.RequestParser()
@@ -65,12 +68,17 @@ class QuestionImageParser(Resource):
         args = full_phrase.parse_args(request)
         n = args.get('ngram')
         phrase = args.get('phrase')
+        local = args.get('local')
         resp = phrase_split(phrase)
         entities = offline_parse_phrase(resp[1], n)
         urls = list()
         log = Logs(phrase=phrase, is_list=question_classifier(phrase), question_phrase=resp[0], list_phrase=resp[1])
         for entity in entities:
             url = get_image(entity)
+            print(local)
+            if local:
+                url = url.replace("https://storage.googleapis.com/livox-images/full/", "")
+                url = url.replace(".png", "")
             log.entities.append(Entity(log.log_id, url, entity))
             # print(entity)
             # print(get_image(entity))
