@@ -10,6 +10,14 @@ class Logs(object):
     """
 
     def __init__(self, phrase, is_list=None, question_phrase=None, list_phrase=None, entities=None):
+        """
+        interface for Logs database table
+        :param phrase: full original phrase
+        :param is_list: if question was classified as a list classifier
+        :param question_phrase:
+        :param list_phrase:
+        :param entities:
+        """
         self.log_id = str(uuid.uuid4())
         self.phrase = phrase
         self.is_list = is_list
@@ -21,6 +29,10 @@ class Logs(object):
         self.timestamp = datetime.datetime.now()
 
     def to_tuple(self):
+        """
+
+        :return:
+        """
         tup = (self.log_id, self.phrase, self.is_list, self.question_phrase, self.list_phrase, self.timestamp)
         return tup
 

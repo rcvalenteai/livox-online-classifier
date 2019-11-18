@@ -66,6 +66,12 @@ def phrase_split(phrase):
 
 
 def question_classifier(phrase):
+    """
+    classifies if a question is a list question
+    :param phrase: phrase to test
+    :return: if the question is a classifier
+    :rtype: bool
+    """
     que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats', 'is', 'who', 'whos', 'are', 'how']
     words = phrase.split()
     if 'or' in words:
