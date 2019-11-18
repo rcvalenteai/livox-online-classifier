@@ -79,6 +79,7 @@ class QuestionImageParser(Resource):
             if local:
                 url = url.replace("https://storage.googleapis.com/livox-images/full/", "")
                 url = url.replace(".png", "")
+                #test
             log.entities.append(Entity(log.log_id, url, entity))
             # print(entity)
             # print(get_image(entity))
