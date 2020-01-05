@@ -8,8 +8,8 @@ def add_question_words():
     """
     pattern_dict = dict()
     que_words = ['what', 'when', 'where', 'would', 'want', 'do', 'whats','is', 'who', 'whos', 'are', 'how']
-    what_words = ['favorite', 'for', 'want']
-    what_ptrns = [1, 1, 0]
+    what_words = ['favorite', 'for', "to", 'want']
+    what_ptrns = [1, 1, 1, 0]
     when_words = ['going', 'go']
     when_ptrns = [0, 0]
     where_words = ['for', 'go', 'from', 'to', 'going']

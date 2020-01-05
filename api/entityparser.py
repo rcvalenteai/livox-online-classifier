@@ -189,7 +189,7 @@ def ngrams(words, n=2):
 
 def specngrams(words, n):
     """
-    returns specified ngrams in a list of words, limited by order
+    returns specified ngrams in a list of words, only ngrams from adjacent words
     :param words: list of tokenized words
     :param n: ngram to perform computation over
     :return: list of ngrams
@@ -197,7 +197,6 @@ def specngrams(words, n):
     k = len(words)
     if k < n:
         n = k
-        # aise NGramException(n, k)
     ngrams = []
     for i in range(k - (n - 1)):
         entity = ""
