@@ -12,6 +12,7 @@ from api.tester import threaded_test_cases
 from api.tester import test_cases
 import json
 from api.logging import Logs, Entity
+from api.entity_phrase_parser import EntityPhrase
 
 application = Flask(__name__)
 application.config.SWAGGER_UI_DOC_EXPANSION = 'list'
@@ -70,7 +71,7 @@ class QuestionImageParser(Resource):
         phrase = args.get('phrase')
         local = args.get('local')
         resp = phrase_split(phrase)
-        entities = offline_parse_phrase(resp[1], n)
+        entities = EntityPhrase.parse(resp[1], n)
         urls = list()
         log = Logs(phrase=phrase, is_list=question_classifier(phrase), question_phrase=resp[0], list_phrase=resp[1])
         for entity in entities:
@@ -120,7 +121,7 @@ class EntityParser(Resource):
         args = list_phrase.parse_args(request)
         phrase = args.get('phrase')
         n = args.get('ngram')
-        resp = offline_parse_phrase(phrase, n)
+        resp = EntityPhrase.parse(phrase, n)
         return resp
 
 
