@@ -5,7 +5,6 @@ import json
 import datetime
 
 
-
 class MySQLDB(object):
     def __init__(self, user, password, host, database):
         self.conn = mysql.connector.connect(user=user, password=password, host=host,

@@ -1,15 +1,10 @@
-from flask import Flask, request, render_template
-from flask_restplus import Resource, Api, reqparse, fields
+from flask import Flask, request
+from flask_restplus import Resource, Api, reqparse
 from flask_restplus import inputs
 from flask_cors import CORS
 from api.imagedber import get_image
-from api.entityparser import parse_phrase
-from api.entityparser import offline_parse_phrase
-from api.entityparser import model
-from api.phraseparser import phrase_split, question_classifier
-import mysql.connector
+from api.question_phrase_parser.question_parser import phrase_split, question_classifier
 from api.tester import threaded_test_cases
-from api.tester import test_cases
 import json
 from api.logging import Logs, Entity
 from api.entity_phrase_parser import EntityPhrase
@@ -48,14 +43,8 @@ invocation_phrase.add_argument('phrase', type=str, required=True,
                                default='what would you like for dinner pizza or pasta', help='entire phrase to parse')
 
 
-# toggler = reqparse.RequestParser()
-# toggler.add_argument('toggle', type=bool, required=True,
-#                      default=True, help='used to load word2vec into and out of memory for entity parsing')
-
-#api.namespaces.clear()
 api.namespaces[0].name = 'Livox API'
 api.namespaces[0].description = 'API methods for Livox List Classifier'
-#web = api.namespace(name='Analysis API', description='API methods for the AxonBeats website', path=None)
 
 
 @api.route("/question_img_parser")
@@ -75,6 +64,8 @@ class QuestionImageParser(Resource):
         urls = list()
         log = Logs(phrase=phrase, is_list=question_classifier(phrase), question_phrase=resp[0], list_phrase=resp[1])
         for entity in entities:
+
+
             url = get_image(entity)
             print(local)
             if local:
@@ -122,23 +113,6 @@ class EntityParser(Resource):
         phrase = args.get('phrase')
         n = args.get('ngram')
         resp = EntityPhrase.parse(phrase, n)
-        return resp
-
-
-@api.route("/offline_entities")
-class OfflineEntityParser(Resource):
-
-    @api.expect(list_phrase)
-    def get(self):
-        """
-        get a list of entities from a phrase using offline model
-
-        Parses the list portion of a sentence to determine entities (unigrams/bigrams)
-        """
-        args = list_phrase.parse_args(request)
-        phrase = args.get('phrase')
-        n = args.get('ngram')
-        resp = offline_parse_phrase(phrase, n)
         return resp
 
 
