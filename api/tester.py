@@ -1,12 +1,9 @@
 import csv
-from api.entityparser import offline_parse_phrase
-from api.entityparser import model
-from api.phraseparser import phrase_split
-from api.imagedber import get_image
+from api.entity_phrase_parser import EntityPhrase
+from api.question_phrase_parser.question_parser import phrase_split
 from api.imagedber import get_image_test
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
 
 
 def load_csv(filename):
@@ -33,7 +30,7 @@ class Test:
         response = dict()
         resp = phrase_split(self.full_phrase)
         n = 3
-        detected_entities = offline_parse_phrase(resp[1], n)
+        detected_entities = EntityPhrase.parse(resp[1], n)
         result = all(elem in detected_entities for elem in self.entities)
         print(str(result).upper())
         response['invocation'] = resp[0]
@@ -54,6 +51,7 @@ class Test:
         response['images'] = imgs
         response['result'] = result
         return response
+
 
 def threaded_helper(row):
     case = Test(row)
@@ -105,9 +103,6 @@ def threaded_test_cases():
         final_report = json.dumps(final_report)
         final_report = json.loads(final_report)
         return final_report
-
-
-
 
 
 def test_cases():

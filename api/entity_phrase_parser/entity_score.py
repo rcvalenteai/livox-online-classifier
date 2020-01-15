@@ -7,7 +7,6 @@ EntityScore
 
 Handles scoring of ngram entities using generated/loaded dictionary vocabulary
 """
-import json
 import api.entity_phrase_parser.vocab_generator as vocab_gen
 
 
