@@ -4,9 +4,10 @@ import numpy as np
 
 def reformat_two_column(filename):
     raw_responses = helpers.io.load_csv(filename)[1:]
-    questions = np.ravel([response[2::2] for response in raw_responses])
-    solutions = np.ravel([response[3::2] for response in raw_responses])
-    return np.asarray(list(zip(questions, solutions)))
+    questions = np.ravel([response[2::3] for response in raw_responses])
+    solutions = np.ravel([response[3::3] for response in raw_responses])
+    categories = np.ravel([response[4::3] for response in raw_responses])
+    return np.asarray(list(zip(questions, solutions, categories)))
 
 
 def remove_characters(phrases, banned_characters):
@@ -49,15 +50,34 @@ def preprocess_solutions(solutions):
     return solutions
 
 
+def preprocess_categories(categories):
+    categories = [category.lower() for category in categories]
+    return categories
+
+
 def clean_format_raw_mturk(filename, output_filename=None):
     reformatted = reformat_two_column(filename)
     questions = preprocess_questions(reformatted[:,0])
     solutions = preprocess_solutions(reformatted[:,1])
-    cleaned = list(zip(questions, solutions))
+    categories = preprocess_categories(reformatted[:,2])
+    cleaned = list(zip(questions, solutions, categories))
     if output_filename is not None:
         helpers.io.write_list_csv('cleaned', output_filename, cleaned)
+    return cleaned
 
 
-clean_format_raw_mturk("mturk-r1.csv", 'mturk.csv')
+def load_n_batches(batches, output_filename=None):
+    cleaned_batches = list()
+    for batch in range(batches):
+        cleaned_batch = clean_format_raw_mturk("./data/mturk-r" + str(batch+1) + ".csv")
+        cleaned_batches = cleaned_batches + cleaned_batch
+    if output_filename is not None:
+        helpers.io.write_list_csv('cleaned', output_filename, cleaned_batches)
+    return cleaned_batches
+
+
+load_n_batches(1, 'mturk.csv')
+
+# clean_format_raw_mturk("./data/mturk-r1.csv", 'mturk.csv')
 
 
