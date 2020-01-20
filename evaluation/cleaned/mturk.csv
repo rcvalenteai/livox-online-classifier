@@ -1,0 +1,392 @@
+what music would you like to listen to pop rock alternative or hip hop,"pop,rock,alternative,hip hop",object/entity
+what do you want to do now eat sleep or walk,"eat,sleep,walk",activities
+how many hours did you sleep three four or five,"three,four,five",numbers
+what do you want to drink water diet coke or fruit juice,"water,diet coke,fruit juice",object/entity
+who is your favorite artist,"billie elish,lana del rey,taylor swift",people
+what kind of car do you like bmw ford or rolls royce,"bmw,ford,rolls royce",organization
+what is your favorite color blue green yellow or all,"blue,green,yellow,all",description
+what do you like visiting most the mountains the sea or the city,"mountains,sea,city",location
+what do you want to do saturday afternoon go to the zoo visit your parents or go to the mall,"go to zoo,visit your parents,go to mall",location
+which grocery store are you going to king soopers safeway or whole foods,"king soopers,safeway,whole foods",organization
+which dog won that competition the great dane the poodle or the retriever,"great dane,poodle. retriever",object/entity
+how do you want to video chat zoom facebook or skype,"zoom,facebook,skype",organization
+which team won in swimming the us china or argentina,"us,china. argentina",location
+what was the outcome of that case guilty innocent or hung jury,"guilty,innocent,hung jury",description
+which meal do you want to have out saturday breakfast lunch or dinner,"breakfast,lunch,dinner",activities
+which color sweater do you want to buy blue green or black,"blue,green,black",description
+is your favorite season winter spring summer or fall,"winter,spring,summer,fall",date/time
+do you want to adopt a house cat hound dog or a fish,"house cat,hound dog,fish",object/entity
+do you like tacos burritos or tostadas the most,"tacos,burritos,tostadas",object/entity
+do you speak english french or spanish,"english,french,spanish",object/entity
+do you drink soy milk almond milk or dairy milk,"soy milk,almond milk,dairy milk",object/entity
+is football basketball or baseball your favorite sport,"football,basketball,baseball",activities
+does your desk have a pencil holder stapler or hole punch,"pencil holder,stapler,hole punch",object/entity
+are your eyes blue green or brown,"blue,green,brown",description
+do you want bagels muffins or toast for breakfast,"bagels,muffins,toast",object/entity
+do you like the brown blue or black shoes better,"brown,blue,black",description
+should we go to italy france or greece,"italy,france,greece",location
+do you want to meet for coffe dinner or drinks,"coffee,dinner,drinks",object/entity
+should we go see a romance comedy or horror movie tonight,"romance,comedy,horror",description
+when our plane lands should we take a bus train or cab home,"bus,train,cab",object/entity
+when i get to your house should i knock at the back side or front door,"back,side,front",description
+would you prefer cookies cake or ice cream for dessert,"cookies,cake,ice cream",object/entity
+would you rather have a sandwich soup or salad for lunch,"sandwich,soup,salad",object/entity
+do you want to go on vacation to denver san diego or orlando,"denver,san diego,orlando",location
+is your preference to ski at keystone breckenridge or vail,"keystone,breckenridge,vail",location
+do you want to listen to music by maroon 5 bon jovi or justin timberlake,"maroon 5,bon jovi,justin timberlake",organization
+would you rather have your shrimp baked fried or grilled,"baked shrimp,fried shrimp,grilled shrimp",description
+do you want to eat a chocolate chip cookie peanut butter cookie or white macadamia nut cookie,"chocolate chip cookie,peanut butter cookie,white macadamia nut cookie",object/entity
+for our upcoming trip would you rather travel by car airplane or train,"car,airplane,train",object/entity
+would you like to visit europe asia or south america,"europe,asia,south america",location
+what would you like to drink coffee tea or water,"coffee,tea,water",object/entity
+where do you want to go on vacation paris rome or london,"paris,rome,london",location
+what is your favorite video game super mario brothers minecraft or diablo,"super mario brothers,minecraft,diablo",misc
+what class do you want to take in school chemistry physics or geography,"chemistry,physics,geography",object/entity
+what color should we paint the room red blue or white,"red,blue,white",description
+how would you like to get to the city by plane train or car,"plane,train,car",object/entity
+what flavor ice cream do you want chocolate vanilla or strawberry,"chocolate,vanilla,strawberry",description
+what would you like on your hot dog ketchup mustard or onions,"ketchup,mustard,onions",object/entity
+where would you like to work out today the gym home or the park,"gym,home,park",location
+what would you like for breakfast today eggs pancakes or burritos,"eggs,pancakes,burritos",object/entity
+what would you like to drink coke coffee or water,"coke,coffee,water",object/entity
+what kind of movie would you like to watch action comedy or family,"action,comedy,family",description
+what activity would you like to do today roller skating going to the movies or walking in the park,"roller skating,going to movies,walking in park",activities
+when would you like to start your new diet today next week or next month,"today,next week,next month",date/time
+where would you like to go on vacation hawaii new york or california,"hawaii,new york,california",location
+what kind of phone would you like to buy apple samsung or huaweihat kind of phone would you like to buy apple samsung or,"apple,samsung,huawei",organization
+who would you rather meet oprah obama or trump,"oprah,obama,trump",people
+where would you like to go italy spain or japan,"italy,spain,japan",location
+which would you rather win a home a car or a vacation,"home,car,vacation",object/entity
+what would you like for breakfast eggs bread and butter or coffee,"eggs,bread and butter,coffee",object/entity
+how do you like your eggs scrambled hard boiled or fried,"scrambled,hard boiled,fried",object/entity
+which is your favorite season summer winter spring or fall,"summer,winter,spring,fall",date/time
+where would you rather go on vacation a beach the mountains or a lake,"beach,mountains,lake",location
+if you could buy a property what would you purchase a home a town house or an apartment,"home,town house,apartment",location
+where would you like to go the mall the park or the movies,"mall,park,movies",location
+do you want to go to the gym the club or stay at home,"gym,club,home.",location
+do you want to eat rice beans or potatoes,"rice,beans potatoes",object/entity
+what sides would you like mashed potato brussels sprout or mac & cheeses,"mashed potato,brussels sprout,mac & cheese",object/entity
+do you wanna visit new york la or chicago,"new york,la,chicago",location
+do you want to watch football basketball or baseball.,"football,basketball baseball.",activities
+do you want to fly drive or sail,"fly,drive,sail",activities
+do you want fries baked beans or dinner rolls,"fries,baked beans,dinner rolls",object/entity
+are you feeling well rested and energized,"rested,energized",people
+do you have a time that you need to be woken up,woken,date/time
+what do you want for dinner tonight,"dinner,tonight",activities
+are you interested in watching a movie with me,"movie,me",activities
+did you finish all of your schoolwork,"finish,schoolwork",activities
+how was your day,day,people
+how is your computer running today after it's cleanup,"computer,running,cleanup",object/entity
+do you have any money that i could borrow from you,"money,borrow",object/entity
+are you going to shop eat or play,"shop,eat,play",activities
+do you listen to country pop jazz,"countrty,pop,jazz",activities
+are you a sophmore junior or senior,"sophmore,junior,senior",activities
+is you appointment at one two or three pm,"one,two,three",date/time
+is it goint to rain snow or sleet today,"rain,snow,sleet",misc
+is the meeting at home the office or the coffee shop,"home,office,coffee shop",location
+are your friends sister and parents coming to the party,"friends,sister,parents",people
+is the high temperature today fifty sixty or seventy,"fifty,sixty,seventy",numbers
+do you like dogs or cats better,"dogs,cats",object/entity
+have you visited new orleans orlando or washington d.c,"new orleans,orlando,washington,d.c",location
+are you having a hamburger or a hot dog to eat,"hamburger,hot dog",object/entity
+would you prefer to see a movie with tom hanks liam neeson or al pacino,"tom hanks,liam neeson,al pacino",people
+does your meeting start at one or two tomorrow,"one,two",date/time
+are you available for dinner on either january 27 or january 29,"january 27,january 29",date/time
+did you see the lions tigers and cheetahs at the big cat exhibit at the zoo,"lions,tigers,cheetahs",object/entity
+do you prefer baseball or football,"baseball,football",activities
+what's your favorite type of fast food chicken nuggets cheeseburgers fries pizza,"chicken nuggets,cheeseburgers,fries,pizza",object/entity
+which type of weather do you prefer rain sunny cloudy stormy,"rain,sunny,cloudy,stormy",description
+which is most important to you success happiness money friendship,"success,happiness,money,friendship",description
+where would you like to vacation the beach mountains forest city,"beach,mountains,forest,city",location
+who do you enjoy being around the most family friend partner children stranger,"family,friend,partner,children,stranger",people
+what sport do you like to play the most basketball golf tennis soccer football baseball,"basketball,golf,tennis,soccer,football,baseball",activities
+what is your favorite holiday christmas valentine's day thanskgiving birthday fourth of july,"christmas,valentine's day,thanskgiving,birthday,fourth of july",date/time
+what do you do for fun cooking reading television video games exercise,"cooking,reading,television,video games,exercise",activities
+do you prefer reality tv soap operas or sit coms,"reality tv,soap operas,sit coms",misc
+do you like ice cream or popsicles,"ice cream,popsicles",misc
+is your hair blonde brunette brown or red,"blonde,brunette,brown,red",description
+do you wear a bikini or a one-piece swimsuit,"bikini,one-piece swimsuit",object/entity
+do you prefer a pet with feathers fur or fins,"feathers,fur,fins",description
+are you more attracted to geeks or jocks,"geeks,jocks",description
+is your favorite meal breakfast lunch or dinner,"breakfast,lunch,dinner",activities
+would you rather book a vacation to the beach the mountains or the city,"beach,mountains,city",location
+do you want a soft drink iced coffee or chocolate milk,"soft drink,iced coffee,chocolate milk",object/entity
+are you feeling depressed ecstatic or withdrawn,"depressed,ecstatic,withdrawn",description
+would you like to pay tennis baseball or ping pong,"tennis,baseball,ping pong",activities
+are you exhausted energetic or relaxed,"exhausted,energetic,relaxed",description
+do you feel excited bored or worried,"excited,bored,worried",description
+do you want to be a mailman engineer or artist,"mailman,engineer,artist",people
+would you like pancakes hot cereal or fried eggs,"pancakes,hot cereal,fried eggs",object/entity
+are you a pisces taurus or virgo,"pisces,taurus,virgo",misc
+what’s your mood like as in happy or sad,"happy,sad",people
+shall i go now or later,"now,later",date/time
+should i bring flowers or candy,"flowers,candy",misc
+are you a cop or security guard,"cop,security guard",organization
+are you a lawyer or paralegal,"lawyer,paralegal",people
+are you young or old,"young,old",people
+are you a black or asian man,"black,asian",description
+do you have preteens or teens,"teens,preteens",people
+are you tall or short,"tall,short",description
+do you like basketball soccer or baseball,"basketball,soccer or baseball",activities
+do you like to run or walk,"run,walk",activities
+would you like ice cream coffee or water,"ice cream,coffee or water",object/entity
+do you like skinny girls or big girls,"skinny girls,big girls",people
+can i get you some cookies cake or cheese,"cookies,cake,cheese",object/entity
+have you been to new york or maine,"new york,maine",location
+do you want one two or three hats,"one,two,three",object/entity
+do you use turbotax tax act or h&r block for your taxes,"turbotax,tax act,h&r block",object/entity
+are you disturbed content or excited,"disturbed,content,excited",description
+are you from the united states france or canada,"united states,france,canada",location
+do you live in a city suburbs or the country,"city,suburbs,country",location
+do you go to sleep at 8:00 9:00 or 10:00,"8:00,9:00,10:00",date/time
+do you live in an apartment town house or house,"apartment,town house,house",location
+do you swim dance or run,"swim,dance,run",activities
+do you wake up at 6:00 7:00 or 8:00,"6:00,7:00,8:00",date/time
+does the party start in the afternoon or evening,"afternoon,evening",date/time
+was the house painted red green or brown,"red,green,brown",description
+who are you going to call bob or sue,"bob,sue",people
+will the meeting be held at the office or the hotel or the convention center,"office,hotel,convention center",location
+where are you having lunch burger king or kentucky fried chicken,"burger king,kentucky fried chicken",location
+how much is the plane ticket less than $400 or more than $400,"less than $400,more than $400",numbers
+who did you ask to attend the meeting bill patti tina or tom,"bill,patti,tina,tom",people
+what kind of car are you going to buy a chevrolet or a chrysler or a toyota,"chevrolet,chrysler,toyota",object/entity
+do you want to vacation in new mexico california or maine,"new mexico,california,maine",location
+can you walk or bike to your classes,"walk,bike",activities
+will you have pizza or tacos for lunch,"pizza,tacos",object/entity
+do you have a free hour at two or three,"two,three",date/time
+would you like a book or an audiobook better,"book,audiobook",object/entity
+will you work for the government or state,"government,state",organization
+is your favorite animal a dog cat or hamster,"dog,cat,hamster",object/entity
+will you ride with lisa jim or karen,"lisa,jim,karen",people
+do you take your medications in the morning afternoon or night,"morning,afternoon,night",date/time
+did you go over under or around the table,"over,under,around",misc
+can i have a dog a cat or a bird for a pet,"dog,cat,bird",object/entity
+have you been to paris or london,"paris,london",location
+are we out of eggs flour chocolate milk and sugar,"eggs,flour,chocolate milk,sugar",object/entity
+if i brought five six or seven friends would that be too many,"five,six,seven",numbers
+what is the availability for table tennis and swimming,"table tennis,swimming",activities
+can you bring friends family or coworkers on the trip,"friends,family,coworker",people
+will you be visiting your grandparents or cousins this time,"grandparents,cousins",people
+does your father work full-time or part-time,"full-time,part-time",date/time
+have you decided to wear sandals tennis shoes or boots with your jeans,"sandals,tennis shoes,boots",object/entity
+on vacation will you visit a museum mall night club or amusement park,"museum,mall,night club,amusement park",location
+how often do you go dancing hiking biking or swimming,"dancing,hiking,biking,swimming",activities
+what color eyes do you have: brown green blue gray or hazel,"brown,green,blue,gray,hazel",description
+can you have pie cake or ice cream on your diet,"pie,cake,ice cream",object/entity
+does your child go to day care or nursery school yet,"day care,nursery school",location
+do you want to watch mandalorian you or cheer,"mandalorian,you,cheer",misc
+are you feeling content upset or neutral,"content,upset,neutral",description
+would you like pizza tacos or burgers for lunch,"pizza,tacos,burgers",object/entity
+is the movie at two or three,"two,three",date/time
+would you like french dressing or ranch on your salad,"french dressing,ranch",object/entity
+do you want to go to home depot or lowes for supplies,"home depot,lowes",location
+is beyonce or taylor swift your favorite singer,"beyonce,taylor swift",people
+do you want to go to the park or the pool this afternoon,"park,pool",location
+would you prefer to shop at walmart safeway or amazon,"walmart,safeway,amazon",location
+do you want to use your cell phone tablet or laptop,"cell phone,tablet,laptop",object/entity
+do you want to have a picnic at the park at home or at the lake,"park,home,lake",location
+do you want to use a marker pen or pencil,"marker,pen,pencil",object/entity
+would you like to turn on the heat ac or fan,"heat,ac,fan",misc
+do you want to do a cardio weight or stretch workout,"cardio,weight,stretch",misc
+would you like to watch on the television laptop or computer,"television,laptop,computer",object/entity
+should i turn on the kitchen bedroom or living room speakers,"kitchen,bedroom,living room",location
+will you be leaving on the 10th or the 11th,"10th,11th",date/time
+do you think i should paint my apartment white beige or pink,"white,beige,pink",description
+for dessert would you like pecan pie chocolate cake or ice cream,"pecan pie,chocolate cake,ice cream",object/entity
+can i get you some hot chocolate or coffee,"hot chocolate,coffee",object/entity
+will you be driving or taking the bus or taking a rideshare,"driving,taking bus,taking rideshare",activities
+did you invite henry or pete to the party,"henry,pete",people
+will the ceo or the vp be at the meeting,"ceo,vp",people
+would you like to go to the park or the museum this weekend,"park,museum",location
+which destination interests you most for our vacation san francisco miami or oahu,"san francisco,miami,oahu",location
+who's your very best friend margaret sandy or jill,"margaret,sandy,jill",people
+did that movie make you happy or sad,"happy,sad",description
+of all the places you've worked did you like ibm chase bank or kaiser permanente best,"ibm,chase bank,kaiser permanente",organization
+what should we plan to do over the summer tennis swimming or hiking,"tennis,swimming,hiking",activities
+would you prefer to leave at noon 1:00 or 2:30 today,"noon,1:00,2:30",date/time
+in your opinion will we need a grill coffee maker or punch bowl for the party,"grill,coffee maker,punch bowl",object/entity
+do you think that outfit makes your sister look fat or old,"fat,old",description
+do you plan to go to boston by train car or airplane,"train,car,airplane",object/entity
+do you prefer cupcakes or cookies,"cupcakes,cookies",object/entity
+are you feeling excited or relieved,"excited,relieved",description
+do you want me to pick you up at the airport at 10 am 11 am or noon,"10 am,11 am,noon",date/time
+do you want to go to boston new york or san francisco for the next vacation,"boston,new york,san francisco",location
+do you prefer to hang out with leah lucy or hannah,"leah,lucy,hannah",people
+do you want to work for amazon google or facebook,"amazon,google,facebook",organization
+do you like to play tennis soccer or basketball,"tennis,soccer,basketball",activities
+are you relaxed stressed or mad,"relaxed,stressed,mad",description
+do you want hotdogs chicken or hamburgs,"hotdogs,chicken,hamburgs",object/entity
+do you want me to come over at nine or ten,"nine,ten",date/time
+are you going to get a new cat bird or dog,"cat,dog,bird",misc
+do you want to set at a booth or table at the diner,"booth,table",location
+do you want to go and watch football or baseball,"football,baseball",activities
+is your new car red or blue,"red,blue",object/entity
+is it going to rain snow or sleet tomorrow,"rain,snow,sleet",description
+have you eaten breakfast or lunch yet today,"breakfast,lunch",activities
+how is the temperature are you hot or cold,"hot,cold",description
+will the game be at four or five tomorrow,"four,five",date/time
+did you move the meeting to monday or tuesday,"monday,tuesday",date/time
+should we order pizza chinese or subs for dinner,"pizza,chinese,subs",misc
+did you drop the car off at the dealership or the tire shop,"dealership,tire shop",location
+was this address in lansing or in jackson,"lansing,jackson",location
+did you leave the book with tim dan or sue,"tim,dan,sue",people
+have you ever eaten at subway or jimmy johns,"subway,jimmy johns",organization
+what store do you like more walmart taget or meijer,"walmart,targer,meijer",organization
+where is your favorite place to go in chicago and new york,"chicago,new york",location
+have you ever felt happy excited or overwhelmed after work,"happy,exicted,overwhelmed",misc
+who do you think does a better job at work kim chris kathy or mark,"kim,chris,kathy,mark",people
+did you see if bill or george won an award last night,"bill,george",people
+what is your favorite race in swimming back stroke or butterfly,"back stroke,butterfly",activities
+who is your favorite charity to donate to st. jude or harvest for hunger,"st. jude,harvest for hunger",organization
+is you favorite color red yellow blue or green,"red,yellow,blue,green",object/entity
+is your favorite flower a rose daisy or tulip,"rose,daisy,tulip",object/entity
+is your favorite holiday halloween thanksgiving or christmas,"halloween,thanksgiving,christmas",date/time
+is your favorite sports basketball football or golf,"basketball,football,golf",activities
+is your favorite season spring summer or fall,"spring,summer,fall",date/time
+do you prefer italian chinese or french food,"italian,chinese,french",description
+do prefer jogging biking or hiking for exercise,"jogging,biking,hiking",activities
+are you short tall or average height,"short,tall,average",description
+do you want to eat pizza tacos or chow mein,"pizza,tacos,chow mein",object/entity
+did you talk to dana sally or lisa,"dana,sally,lisa",people
+did you attend harvard yale or stanford,"harvard,yale,stanford",organization
+do you want to see a movie catch a game or go to the park,"movie,game,park",activities
+did you answer 1 3 or 6,"1,3,6",numbers
+did you want to head out at 7:00 8:00 or 9:00,"7:00,8:00,9:00",date/time
+which did you like best the red blue or green one,"red,blue,green",description
+did you leave your glasses at the house gym or in the car,"house,gym,car",location
+will you vacation in rome paris or miami florida,"rome,paris,miami,florida",location
+can you the woman's face ears and hair style in the photo,"face,ears,hair style",object/entity
+does the retiree want to travel or volunteer full time,"travel,volunteer full time",activities
+would you prefer a hooded pullover or cardigan sweater,"hooded pullover,cardigan sweater",object/entity
+do you think that noise is coming from the kitchen bedroom or den,"kitchen,bedroom,den",location
+will he major in finance filmmaking law or psychology in college,"finance,filmmaking,law,psychology",activities
+weren't you supposed to see your cousin aunt or great uncle today,"cousin,aunt,great uncle",people
+does the business need a state permit federal registration or local license,"state permit,federal registration,local license",object/entity
+would you like to watch netflix play a board game or solve a puzzle,"netflix,board game,puzzle",activities
+do you want to go out for dinner or stay in and cook.,"out,in",location
+do you want the red table cloth the blue one or the green one,"red,blue,green",description
+should we go to minnesota or michigan for the holidays,"minnesota,michigan",location
+do you want to watch star wars lord of the rings or the avengers,"star wars,lord of rings,avengers",activities
+do you want to go grocery shopping today or tomorrow,"today,tomorrow",date/time
+should we schedule our conference call for the morning afternoon or evening,"morning,afternoon,evening",date/time
+would you like a ball a doll or a bike for christmas,"ball,doll,bike",object/entity
+where would you like to go on vacation hawaii florida or bahamas,"hawaii,florida,bahamas",location
+who would you like to ask out joe mike or david,"joe,mike,david",people
+when do  you want to go to the store 1:00 2:00 or 3:00,"1:00,2:00,3:00",date/time
+how many cookies do you want 1 2 or 3,"1,2,3",numbers
+what do  you want for breakfast eggs pancakes or waffles,"egg,pancakes,waffles",object/entity
+where do you want to go tonight bowling movies or bar,"bowling,movies,bar",location
+where do you want to eat lunch chick-fila- mcdonalds or wendys,"chick-fil-a,mcdondalds,wendys",location
+who do you want to hire alexa cindy or bob,"alexa,cindy,bob",people
+is the only choice between onions bell peppers or red pepers,"onions,bell peppers,red peppers",description
+can we either see star wars little women or frozen ii,"star wars,little women,frozen ii",activities
+whom did you vote for bernie sanders or donald trump,"bernie sanders,donald trump",people
+are there going to be more options to eat other than mexican china fusion or indian,"mexican,china fusion,indian",object/entity
+can i see the doctor at lunch afternoon or morning,"lunch,afternoon,morning",date/time
+are these approved classes history science or diversity training,"history,science,diversity training.",object/entity
+may i go on tuesday monday or the holiday,"tuesday,monday,holiday",location
+whom is the best looking girl mary anne jonnie or trisha,"mary anne,jonnie,trisha",people
+would you like a red blue or black pen to write with,"red pen,blue pen,black pen,",description
+will you bring potatoes pasta or bread,"potato,pasta,bread",object/entity
+are you wanting one nail or two nails to hang the photo,nail,numbers
+would you like to attend the show on monday tuesday or wednesday,"monday,tuesday,wednesday",date/time
+is mary john barbara or mackenzie going with you,"mary,john,barbara,mackenzie",people
+did she say she wanted to be a doctor nurse or dentist,"doctor,nurse,dentist",people
+would you be interested in going biking hiking or camping,"biking,hiking,camping",activities
+are you going to the play concert museum or convention when you travel,"play,concert,museum,convention",activities
+would you like pasta roast beef or chinese food for dinner,"pasta,roast beef,chinese food",misc
+will you be gardening or napping this afternoon,"gardening,napping",activities
+would you rather go to rome or paris,"rome,paris",location
+have you ever gone to italy or france,"italy,france",location
+which do you prefer italian food or chinese food,"italian food,chinese food",misc
+was the water cold hot or lukewarm,"cold,hot,lukewarm",description
+will you be traveling to the united states canada or mexico this year,"canada,united states,mexico",location
+was it raining or snowing,"raining,snowing",description
+would you like to relax at the park the beach or the book store,"park,beach,book store",location
+how many people will be present at the work meeting five ten or twenty five,"five,ten,twenty five",numbers
+who is getting the best grade in history class thomas kelly owen or sarah,"thomas,kelly,owen,sarah",people
+what kind of food should i bring to the picnic potato salad grilled lemon chicken or summer squash,"potato salad,grilled lemon chicken,summer squash",object/entity
+would you rather watch sports or news on television,"sports,news",activities
+which cardio exercise is better on my joints swimming walking or the elliptical machine,"swimming,walking,elliptical machine",activities
+how many discs come in the box set three or four,"three,four",numbers
+for which charity should we make a donation habitat for humanity or united way,"habitat for humanity,united way",organization
+do you want mustard sauerkraut pickles or onions on your hot dog,"mustard,sauerkraut,pickles,onions",object/entity
+will you redecorate the living room bedroom or dining room first,"living room,bedroom,dining room",location
+is your child in grammar school or high school now,"grammar school,high school",location
+is your best subject math science social studies or language arts,"math,science,social studies,language arts",activities
+do you prefer rap jazz country rock or pop music,"rap,jazz,country,rock,pop music",description
+are you playing soccer hockey or baseball this season,"soccer,hockey,baseball",activities
+is your birthday in summer spring winter or fall,"summer,spring,winter,fall",date/time
+would you rather do crosswords or jigsaw puzzles today,"crosswords,jigsaw puzzles",activities
+for sunday dinner do you want pasta seafood or chicken parm,"pasta,seafood,chicken parm",misc
+this year for vacation do you want to go to ocean city las vegas or florida,"ocean city,las vegas,florida",location
+is there anything other than hot pockets toilet paper paper towels and body wash that you need from walmart,"hot pockets,toilet paper,paper towels,body wash",misc
+do you want to go skiing or tubing,"skiing,tubing",activities
+5 x 5 = 5 20 or 25,"5,20,25",numbers
+to get warm do you want me to grab your scarf hoodie slippers or blanket,"scarf,hoodie,slippers,blanket",object/entity
+what would you say is your favorite color blue green or red,"blue,green,red",misc
+what year were you born 1980 1981 or 1982,"1980,1981,1982",date/time
+do you want to panda express wendy's or taco bell,"panda express,wendy's,taco bell",location
+do you want a dress shoes or pants suit for christmas,"dress,shoes,pants",object/entity
+do you know directions to the mall restaurant and bank,"mall,restaurant,bank",location
+do you want to schedule the meeting at 8:00 8:30 or 9:00,"8:00,8:30,9:00",date/time
+do you want to play poker spades or rummy,"poker,spades,rummy",activities
+do you prefer morning afternoon or evening to exercise,"morning,afternoon,evening",date/time
+are you a demoicrat republican or independent,"democrat,rebpulican,independent",organization
+is you lucky number 7 11 or 13,"7,11,13",numbers
+would you prefer a vacation to disneyland disney world or universal studios,"disneyland,disney world,universal studios",location
+do you want to listen to rap rock or classical music,"rap,rock,classical",misc
+do you want to stay at the holiday inn the hampton inn or the crowne plaza,"holiday inn,hampton inn,crowne plaza",location
+do you want to post on facebook twitter or instagram,"facebook,twitter,instagram",object/entity
+you want to take a bus train or plane,"bus,train,plane",object/entity
+do you want to go on monday tuesday or wednesday,"monday,tuesday,wednesday",date/time
+would you prefer to leave morning afternoon or night,"morning,afternoon,night",date/time
+would you like to eat thai mexican or chinese food,"thai,mexican,chinese food",object/entity
+is there ice or snow on the sidewalk,"ice,snow",object/entity
+will people be dancing or just talking,"dancing,talking",activities
+when will the meeting be morning afternoon or evening,"morning,afternoon,evening",date/time
+does she work full-time or part-time,"full-time,part-time",description
+did he register as a democrat republican or independent,"democrat,republican,independent",object/entity
+will the ceremony will be inside or outside,"inside,outside",location
+should we meet up at starbucks dunkin or your office,"starbucks,dunkin,your office",location
+is that restaurant expensive cheap or medium price,"expensive,cheap,medium price",description
+should we get pizza or steaks for dinner,"pizza,steaks",object/entity
+will the project be done by four or five pm,"four,five",date/time
+was my dentist appointment for the 14th 15th or the 16th,14 15 16,date/time
+do you want rice or noodles with your dinner,"rice,noodles",object/entity
+do you want to go ice skating or sledding tomorrow,"ice skating,sledding",activities
+will it snow or rain in the morning,"snow,rain",object/entity
+did you set the alarm for five or six today,"five,six",date/time
+should we go to the store or the pizzeria to get pizza,"store,pizzeria",location
+which movie would you like to go see,"star wars,jumanji,bad boys,dolittle",description
+what city do you want to live in,"denver,los angeles,new york,atlanta,houston",location
+what kind of alcoholic drinks did you have last night,"midori sour,whiskey sour,manhattan,appletini",object/entity
+what kind of dogs do you like,"golden retriever,springer spaniel,english bulldog,poodle",object/entity
+who did you vote for last election,"mitt romney,hilary clinton,donald trump",people
+what is your favorite exercise,"pilates,yoga,exercise bike,swimming",activities
+where do you want to go on our next vacation,"disney world,six flags,dollywood,knotts berry farm",location
+which flowers should we plant next spring,"roses,blue bonnets,forget-me-nots,tulips,lillies",object/entity
+for breakfast do you like to eat eggs oatmeal or sausage,"eggs,oatmeal,sausage",object/entity
+where would you like to travel to puerto rico france italy or hawaii,"puerto rico,france,italy,hawaii",location
+would you prefer mustard ketchup or relish on your hot dog,"mustard,ketchup,relish",object/entity
+would you like a beer a glass of wine or a cocktail,"beer,glass of wine,cocktail",object/entity
+which political party do you belong to the republican party the democratic party or the independent party,"republican party,democratic party,independent party",organization
+when you work out do you prefer to lift weights or take an aerobics class,"lift weights,take aerobics class?",activities
+if you had to choose one winter sport would you choose skiing ice skating or sledding,"skiing,ice skating,sledding",activities
+when you go to the movies do you prefer comedies mysteries or documentaries,"comedies,mysteries,documentaries",description
+what store do you want to go to target or walmart,"target,walmart",location
+what time do you want to leave 12 or 1 pm,"12,1",date/time
+is your favorite flavor chocolate vanilla or strawberry,"chocolate,vanilla,strawberry",misc
+do you want to wear the dress or suit,"dress,suit",object/entity
+shall we stay at the hotel or the campground,"hotel,campground",location
+do you want to work at the school or the hospital,"school,hospital",location
+should we buy candy or cake,"candy,cake",misc
+do you want to drive the car or truck,"car,truck",object/entity
+what sport would you like to play football basketball or soccer,"football,basketball,soccer?",activities
+what phone is your favorite iphone galaxy or pixel,"iphone,galaxy,pixel",object/entity
+how many dollars can you lend me ten or twenty,"ten,twenty",numbers
+when would you like to eat dinner with me tuesday wednesday or thursday,"tuesday,wednesday,thursday",date/time
+what would you like for dessert cookie dough ice cream or cheesecake,"cookie dough,ice cream,cheesecake",object/entity
+who do you think was a better civil rights leader susan b. anthony or martin luther king jr.,"susan b. anthony,martin luther king jr.",people
+do you prefer watching the super bowl world cup or olympics,"super bowl,world cup,olympics",activities
+do you prefer guys that have money fame or muscles,"money,fame,muscles",misc
