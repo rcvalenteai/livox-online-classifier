@@ -6,6 +6,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.List;
+import java.lang.Double;
 import utils.ResourceLoader;
 
 
@@ -40,8 +43,34 @@ public class MySQLDB extends SQLiteOpenHelper {
     }
 
     private void loadTableValues(SQLiteDatabase db) {
-        // TODO: iterate through tsv tables
+        loadImageValues(db);
+        loadTagValues(db);
+        loadLabelValues(db);
     }
+
+    private void loadImageValues(SQLiteDatabase db) {
+        List<List<String>> values = ResourceLoader.loadTSVList("resources/images.tsv");
+        for(List<String> row: values) {
+            insertImage(row.get(0), row.get(1));
+        }
+
+    }
+
+    private void loadLabelValues(SQLiteDatabase db) {
+        List<List<String>> values = ResourceLoader.loadTSVList("resources/labels.tsv");
+        for(List<String> row: values) {
+            insertLabel(row.get(0), row.get(1), Double.valueOf(row.get(2)));
+        }
+    }
+
+    private void loadTagValues(SQLiteDatabase db) {
+        List<List<String>> values = ResourceLoader.loadTSVList("resources/tags.tsv");
+        for(List<String> row: values) {
+            insertTag(row.get(0), row.get(1));
+        }
+    }
+
+
 
     private void insertImage(String image_id, String location) {
         SQLiteDatabase db = this.getWritableDatabase();
