@@ -8,8 +8,25 @@ public class ImageParser {
     MySQLDB db = new MySQLDB();
 
     private String notFound(String keyword) {
-        // TODO: convert logic
-        return "";
+        String path = "symbol00071621.png";
+        try {
+            path = searchImageWord(keyword.substring(0, keyword.length()));
+        } catch (Exception e) {
+            try {
+                path = stemmed(keyword);
+            } catch (Exception e2) {
+                try {
+                    path = translate(keyword);
+                } catch (Exception e3) {
+                    try {
+                        path = closest(keyword);
+                    } catch (Exception e4) {
+                        assert true;
+                    }
+                }
+            }
+        }
+        return path;
     }
 
     private String stemmed(String keyword) {
