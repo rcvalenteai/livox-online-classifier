@@ -70,6 +70,7 @@ class TestQuestion(object):
         conditions['minority'] = self.minority_entities(found_entities)
         conditions['majority'] = self.majority_entities(found_entities)
         conditions['found_all'] = self.found_all_entities(found_entities)
+        conditions['found_all_fuzzy'] = self.found_all_fuzzy_match(found_entities)
         return conditions
 
     def majority_entities(self, found_entities):
@@ -91,6 +92,16 @@ class TestQuestion(object):
         except ZeroDivisionError:
             percent_found = 0
         return percent_found <= .5
+
+    def found_all_fuzzy_match(self, found_entities):
+        fuzzy_found = True
+        for entity in self.entities:
+            words = entity.split(" ")
+            local_fuzzy_found = False
+            if any(found in words for found in found_entities) or any(found in [entity] for found in found_entities):
+                local_fuzzy_found = True
+            fuzzy_found = local_fuzzy_found
+        return fuzzy_found
 
     def no_entities(self, found_entities):
         return not any(found in self.entities for found in found_entities)
@@ -118,6 +129,7 @@ def test_all_examples(filename):
     summary['minority'] = 0
     summary['majority'] = 0
     summary['found_all'] = 0
+    summary['found_all_fuzzy'] = 0
     for example in examples:
         question = TestQuestion.from_db(example)
         result = question.parsers_eval(ngram_threshold=4)
