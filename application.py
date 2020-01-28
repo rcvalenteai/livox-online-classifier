@@ -159,5 +159,13 @@ class Benchmark(Resource):
         return threaded_test_cases()
 
 
+# @api.route("/evaluate")
+# class Evaluate(Resource):
+#     def get(selfs):
+#         """
+#         runs all collected test cases against dataset
+#         """
+#         return threaded_evaluation()
+
 if __name__ == '__main__':
     application.run()

@@ -10,6 +10,14 @@ def question_word_frequency(filename):
             word_counter[first_word] = word_counter[first_word] + 1
         else:
             word_counter[first_word] = 1
+    word_counter = remove_outlier_words(word_counter)
+    return word_counter
+
+
+def remove_outlier_words(word_counter):
+    for question_word, count in list(word_counter.items()):
+        if count == 1:
+            del word_counter[question_word]
     return word_counter
 
 

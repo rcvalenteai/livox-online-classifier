@@ -76,7 +76,8 @@ def load_n_batches(batches, output_filename=None):
     return cleaned_batches
 
 
-load_n_batches(4, 'mturk.csv')
+clean_format_raw_mturk('./data/mturk-r5.csv', 'mturk-r5.csv')
+#load_n_batches(2, 'mturk-r4.csv')
 
 # clean_format_raw_mturk("./data/mturk-r1.csv", 'mturk.csv')
 
