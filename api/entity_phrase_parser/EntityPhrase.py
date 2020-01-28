@@ -99,12 +99,19 @@ class EntityPhrase(object):
         :return: one sub-list of entities
         :rtype: list<str>
         """
+        if ent_list == [[]]:
+            return []
         scores = []
         for entities in ent_list:
             comb_sum = 0.0
             for entity in entities:
                 comb_sum += EntityScore.get_ngram_score(entity)
-            scores.append(comb_sum / len(entities))
+            try:
+                scores.append(comb_sum / len(entities))
+            except ZeroDivisionError:
+                print(ent_list)
+                print(entities)
+
         best_comb = ent_list[scores.index(max(scores))]
         best_comb = [comb.replace("_and_", " and ") for comb in best_comb]
         return best_comb

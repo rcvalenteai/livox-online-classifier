@@ -9,16 +9,20 @@ def phrase_split(phrase):
     :return: returns a list with two strings the invocation phrase and the list phrase
     :rtype: list<str>
     """
-    words = phrase.split()
-    offset = pattern_dict[words[0]]
-    num_offset = 0
-    for i in range(len(words[1:])):
-        for key, value in offset.items():
-            if words[1:][i] == key:
-                num_offset = value + i + 2
-                break
-    invocation_phrase = " ".join(words[:num_offset])
-    list_phrase = " ".join(words[num_offset:])
+    try:
+        words = phrase.split()
+        offset = pattern_dict[words[0]]
+        num_offset = 0
+        for i in range(len(words[1:])):
+            for key, value in offset.items():
+                if words[1:][i] == key:
+                    num_offset = value + i + 2
+                    break
+        invocation_phrase = " ".join(words[:num_offset])
+        list_phrase = " ".join(words[num_offset:])
+    except Exception:
+        invocation_phrase = ""
+        list_phrase = phrase
     return [invocation_phrase, list_phrase]
 
 
