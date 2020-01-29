@@ -488,13 +488,13 @@ would you like fries or a salad,"fries,salad",object/entity
 would you like to go out on a date on tuesday or wednesday,"tuesday,wednesday",date/time
 are you going to read a book do your homework or play videogames,"read book,do your homework,play videogames",activities
 will you go to college or enter the workforce,"go to college,enter workforce",activities
-what would you like to eat for breakfasteggs or sausages,"eggs,sausages",people
-what would you like to travel withuber or taxi,"uber,taxi",object/entity
-where would you like to hang outhotel or bar,"hotel,bar",location
-what would you like to wearskirt or shorts,"skirts,shorts",people
-when would you like to meet meevening or afternoon,"evening,afternoon",date/time
-which number do you like.two or four,"two,four",numbers
-what do you like doingjogging or running,"jogging,running",activities
+what would you like to eat for breakfast eggs or sausages,"eggs,sausages",people
+what would you like to travel with uber or taxi,"uber,taxi",object/entity
+where would you like to hang out hotel or bar,"hotel,bar",location
+what would you like to wear skirt or shorts,"skirts,shorts",people
+when would you like to meet me evening or afternoon,"evening,afternoon",date/time
+which number do you like two or four,"two,four",numbers
+what do you like doing jogging or running,"jogging,running",activities
 do you like sleeping on bed or coach,"bed,coach",object/entity
 what is your favorite vacation destination new york city paris or berlin,"new york city,paris,berlin",location
 how many scoops of ice cream would you like one two or three,"one,two,three",numbers
