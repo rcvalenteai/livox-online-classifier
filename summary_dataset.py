@@ -71,7 +71,18 @@ class TestQuestion(object):
         conditions['majority'] = self.majority_entities(found_entities)
         conditions['found_all'] = self.found_all_entities(found_entities)
         conditions['found_all_fuzzy'] = self.found_all_fuzzy_match(found_entities)
+        conditions['found_percent'] = self.found_percent_entities(found_entities)
         return conditions
+
+    def found_percent_entities(self, found_entities):
+        results = dict()
+        for correct in self.entities:
+            results[correct] = found_entities.count(correct)
+        try:
+            percent_found = (float(sum(results.values())) / float(len(results)))
+        except ZeroDivisionError:
+            percent_found = 0
+        return percent_found
 
     def majority_entities(self, found_entities):
         results = dict()
@@ -91,7 +102,7 @@ class TestQuestion(object):
             percent_found = (float(sum(results.values())) / float(len(results)))
         except ZeroDivisionError:
             percent_found = 0
-        return percent_found <= .5
+        return 0 < percent_found <= .5
 
     def found_all_fuzzy_match(self, found_entities):
         fuzzy_found = True
@@ -110,7 +121,7 @@ class TestQuestion(object):
         return any(found not in self.entities for found in found_entities)
 
     def found_all_entities(self, found_entities):
-        return all(found in self.entities for found in found_entities)
+        return all(correct in found_entities for correct in self.entities)
 
     def correct_entities(self, found_entities):
         return all(found in self.entities for found in found_entities) and \
@@ -118,7 +129,7 @@ class TestQuestion(object):
 
 
 def test_all_examples(filename):
-    examples = helpers.io.load_csv(filename)[1:]
+    examples = helpers.io.load_csv(filename)
     results = list()
     summary = dict()
     summary['examples'] = len(examples)
@@ -130,6 +141,7 @@ def test_all_examples(filename):
     summary['majority'] = 0
     summary['found_all'] = 0
     summary['found_all_fuzzy'] = 0
+    summary['found_percent'] = 0
     for example in examples:
         question = TestQuestion.from_db(example)
         result = question.parsers_eval(ngram_threshold=4)
@@ -143,6 +155,18 @@ def test_all_examples(filename):
     print(results)
     json_form = json.dumps(results)
     json_form = json.loads(json_form)
+    correct = list()
+    found_all = list()
+    reference = dict()
+    for result in results:
+        if result['entity_classification']['results']['correct']:
+            print(result['phrase'])
+            print(result['entities'])
+            correct.append(result['phrase'])
+        if result['entity_classification']['results']['found_all']:
+            found_all.append(result['phrase'])
+        reference[result['phrase']] = [result['entities'], result['entity_classification']['found']]
+
     with open("results-testing.json", "w") as estimate_report_file:
         json.dump(json_form, estimate_report_file, indent=4, sort_keys=True)
                 

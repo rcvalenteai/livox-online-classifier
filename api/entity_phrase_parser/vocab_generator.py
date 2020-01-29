@@ -2,6 +2,7 @@ import json
 
 from labels import MySQLDB
 from api.entity_phrase_parser.WordEmbedding import WordEmbedding
+from operator import itemgetter
 
 
 def get_labels_from_db():
@@ -49,13 +50,20 @@ def word2vec_ngram_dict(min_ngram=1, max_ngram=3, filename='./resources/vocabula
     count = 0
     model.toggle_word_embedding(local=True)
     print("loaded")
-    for item in model.model.vocab:
+    for item, vocab_obj in model.model.vocab.items():
         words = item.split('_')
         if min_ngram < len(words) <= max_ngram:
             if count < 5:
                 print(" ".join(words).lower())
+                print(item.count)
+                print(type(item.count))
+                print(type(" ".join(words).lower()))
                 count += 1
-            vocabulary[" ".join(words).lower()] = 0
+            vocabulary[" ".join(words).lower()] = vocab_obj.count
+
+    save_dict_as_json(vocabulary, './resources/data-augment/word_embedding_augmentp.json')
+    vocabulary = dict(sorted(vocabulary.items(), key=itemgetter(1), reverse=True)[:10000])
+    save_dict_as_json(vocabulary, './resources/data-augment/word_embedding_augment.json')
 
 
 def load_ngram_dict(filename):
