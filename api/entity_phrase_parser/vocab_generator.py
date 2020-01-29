@@ -61,8 +61,7 @@ def word2vec_ngram_dict(min_ngram=1, max_ngram=3, filename='./resources/vocabula
                 count += 1
             vocabulary[" ".join(words).lower()] = vocab_obj.count
 
-    save_dict_as_json(vocabulary, './resources/data-augment/word_embedding_augmentp.json')
-    vocabulary = dict(sorted(vocabulary.items(), key=itemgetter(1), reverse=True)[:10000])
+    vocabulary = dict(sorted(vocabulary.items(), key=itemgetter(1), reverse=True)[:100000])
     save_dict_as_json(vocabulary, './resources/data-augment/word_embedding_augment.json')
 
 
