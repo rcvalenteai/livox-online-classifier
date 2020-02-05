@@ -47,6 +47,6 @@ def category_frequency(filename):
     return categories_counter
 
 
-question_word_frequency("./cleaned/mturk.csv")
-ngram_frequency("./cleaned/mturk.csv")
-category_frequency("./cleaned/mturk.csv")
+# question_word_frequency("./cleaned/mturk.csv")
+# ngram_frequency("./cleaned/mturk.csv")
+# category_frequency("./cleaned/mturk.csv")
