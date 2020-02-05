@@ -45,6 +45,6 @@ def plot_horizontal_dictionary_counter(dict_counter, title):
     plt.show()
 
 
-plot_word_frequency("./cleaned/mturk-r3ab.csv")
-plot_ngram_frequency("./cleaned/mturk-r3ab.csv")
-plot_category_frequency("./cleaned/mturk-r3ab.csv")
+# plot_word_frequency("./cleaned/mturk.csv")
+# plot_ngram_frequency("./cleaned/mturk.csv")
+# plot_category_frequency("./cleaned/mturk.csv")
