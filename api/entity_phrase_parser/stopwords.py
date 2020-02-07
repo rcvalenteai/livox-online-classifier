@@ -19,6 +19,7 @@ def initialize_stop_words():
     nltk.download('punkt')
     stop_words = set(stopwords.words('english'))
     stop_words.discard('and')
+    print(stop_words)
     return stop_words
 
 
