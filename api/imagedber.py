@@ -188,9 +188,6 @@ def search_image_word(keyword, db=None):
     cur = db.insert(stmt, (keyword,))
     results = dict(cur.fetchall())
 
-    # stmt = "SELECT image_id FROM Tags WHERE tag = %s"
-    # cur = db.insert(stmt, (keyword,))
-    # results2 = list(cur.fetchall())
     results2 = search_tags(keyword, db)
     for result in results2:
         if result[0] in results.items():
