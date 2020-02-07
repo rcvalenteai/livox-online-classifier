@@ -2,6 +2,7 @@ package databaseimageparser;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.Double;
 import java.util.Dictionary;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -80,8 +81,23 @@ public class ImageParser {
     if (labels.isEmpty()) {
         throw new Exception();
     }
-    // TODO: convert logic
-    return ""
+
+    Double max_score = -1.0;
+    // find max_score
+    for (Enumeration<Double> scores = labels.elements(); scores.hasMoreElements();) {
+        Double score = scores.nextElement();
+        if(max_score < score) {
+            max_score = score;
+        }
+     }
+    // find image_id of max_score
+    for (Enumeration<String> image_ids, = labels.keys(); image_ids.hasMoreElements();) {
+        String image_id = image_ids.nextElement();
+        if (labels.get(image_id) == max_score) {
+            return image_id;
+        }
+    }
+    return "";
     }
 
     private String searchImageWord(String keyword) {
