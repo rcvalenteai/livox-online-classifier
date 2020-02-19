@@ -1,7 +1,7 @@
 import csv
-from online_api.api.entity_phrase_parser import EntityPhrase
-from online_api.api.question_phrase_parser.question_parser import phrase_split
-from online_api.api.imagedber import get_image_test
+from api.entity_phrase_parser.EntityPhrase import parse
+from api.question_phrase_parser.question_parser import phrase_split
+from api.imagedber import get_image_test
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -30,7 +30,7 @@ class Test:
         response = dict()
         resp = phrase_split(self.full_phrase)
         n = 3
-        detected_entities = EntityPhrase.parse(resp[1], n)
+        detected_entities = parse(resp[1], n)
         result = all(elem in detected_entities for elem in self.entities)
         print(str(result).upper())
         response['invocation'] = resp[0]

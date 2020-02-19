@@ -1,6 +1,7 @@
 import uuid
 import datetime
-from label_vocabulary_generation.labels.mysqldb import MySQLDB
+from api.imagedber import MySQLDB
+# from label_vocabulary_generation.labels.mysqldb import MySQLDB
 
 
 # this class will take care of logging
