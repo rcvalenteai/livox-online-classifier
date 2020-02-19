@@ -1,11 +1,8 @@
-import helpers.io
-
-
 def get_batch_objects(filename, user_number, output_filename=None):
-    raw_responses = helpers.io.load_csv(filename)[1:]
+    raw_responses = online_api.helpers.io.load_csv(filename)[1:]
     question_responses = raw_responses[user_number::8]
     question_categories = [[question_response[2]] for question_response in question_responses]
-    helpers.io.write_list_csv("scratch", output_filename, question_categories)
+    online_api.helpers.io.write_list_csv("scratch", output_filename, question_categories)
 
 
 for i in range(8):

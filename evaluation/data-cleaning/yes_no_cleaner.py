@@ -1,10 +1,8 @@
-import helpers.io
-import api.entity_phrase_parser.vocab_generator as vocab_gen
 import json
 
 
 def create_yes_no_argus_csv(filename="./data/argus_yes_no_train.csv"):
-    argus = helpers.io.load_csv(filename)[1:]
+    argus = online_api.helpers.io.load_csv(filename)[1:]
     yes_nos = dict()
     final_yes_nos = list()
     for example in argus:
@@ -13,7 +11,7 @@ def create_yes_no_argus_csv(filename="./data/argus_yes_no_train.csv"):
     for question, value in yes_nos.items():
         row = [question, [], "", 0]
         final_yes_nos.append(row)
-    helpers.io.write_list_csv("cleaned", "argus.csv", final_yes_nos[:500])
+    online_api.helpers.io.write_list_csv("cleaned", "argus.csv", final_yes_nos[:500])
 
 
 def create_boolq_yes_no_csv(filename="./data/boolq_yes_no.jsonl"):
@@ -26,7 +24,7 @@ def create_boolq_yes_no_csv(filename="./data/boolq_yes_no.jsonl"):
     for res in result:
         row = [res, [], "", 0]
         final_results.append(row)
-    helpers.io.write_list_csv("cleaned", "boolq.csv", final_results[:500])
+    online_api.helpers.io.write_list_csv("cleaned", "boolq.csv", final_results[:500])
 
 
 create_boolq_yes_no_csv()

@@ -1,9 +1,8 @@
-import helpers.io
 import numpy as np
 
 
 def reformat_two_column(filename):
-    raw_responses = helpers.io.load_csv(filename)[1:]
+    raw_responses = online_api.helpers.io.load_csv(filename)[1:]
     questions = np.ravel([response[2::3] for response in raw_responses])
     solutions = np.ravel([response[3::3] for response in raw_responses])
     categories = np.ravel([response[4::3] for response in raw_responses])
@@ -62,7 +61,7 @@ def clean_format_raw_mturk(filename, output_filename=None):
     categories = preprocess_categories(reformatted[:,2])
     cleaned = list(zip(questions, solutions, categories))
     if output_filename is not None:
-        helpers.io.write_list_csv('cleaned', output_filename, cleaned)
+        online_api.helpers.io.write_list_csv('cleaned', output_filename, cleaned)
     return cleaned
 
 
@@ -72,7 +71,7 @@ def load_n_batches(batches, output_filename=None):
         cleaned_batch = clean_format_raw_mturk("./data/mturk-r" + str(batch+1) + ".csv")
         cleaned_batches = cleaned_batches + cleaned_batch
     if output_filename is not None:
-        helpers.io.write_list_csv('cleaned', output_filename, cleaned_batches)
+        online_api.helpers.io.write_list_csv('cleaned', output_filename, cleaned_batches)
     return cleaned_batches
 
 

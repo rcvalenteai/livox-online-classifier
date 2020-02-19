@@ -1,4 +1,4 @@
-import helpers.io as hio
+from online_api import helpers as hio
 
 
 def question_word_frequency(filename):
