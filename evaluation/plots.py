@@ -35,7 +35,7 @@ def plot_horizontal_dictionary_counter(dict_counter, title):
     y_pos = np.arange(len(categories))
     counts = list(dict_counter.values())
 
-    ax.barh(y_pos, counts , align='center')
+    ax.barh(y_pos, counts, align='center')
     ax.set_yticks(y_pos)
     ax.set_yticklabels(categories)
     ax.invert_yaxis()  # labels read top-to-bottom

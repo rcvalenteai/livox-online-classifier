@@ -1,10 +1,5 @@
-import helpers.io
-
-import helpers.io
-
-
 def clean_question_words(filename, output_filename):
-    raw_responses = helpers.io.load_csv(filename)
+    raw_responses = online_api.helpers.io.load_csv(filename)
     new_responses = list()
     for row in raw_responses:
         words = row[0].split()
@@ -13,7 +8,7 @@ def clean_question_words(filename, output_filename):
         words[0] = cleaned_word
         question = " ".join(words)
         new_responses.append([question, row[1], row[2]])
-    helpers.io.write_list_csv("cleaned", output_filename, new_responses)
+    online_api.helpers.io.write_list_csv("cleaned", output_filename, new_responses)
 
 
 def clean_word(first_word):
