@@ -1,7 +1,8 @@
 import json
 
-from label_vocabulary_generation.labels import MySQLDB
-from online_api.api.entity_phrase_parser import WordEmbedding
+from api.imagedber import MySQLDB
+from api.entity_phrase_parser.WordEmbedding import WordEmbedding
+
 from operator import itemgetter
 
 

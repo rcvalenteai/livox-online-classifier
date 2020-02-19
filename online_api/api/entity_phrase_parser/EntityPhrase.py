@@ -8,8 +8,8 @@ Given a string of words, this class returns the most likely combination of entit
 including single word and compound words, interfaces through parse function
 """
 from nltk.tokenize import word_tokenize
-import online_api.api.entity_phrase_parser.entity_score as EntityScore
-from online_api.api.entity_phrase_parser.stopwords import STOP_WORDS
+from api.entity_phrase_parser.stopwords import STOP_WORDS
+from api.entity_phrase_parser import entity_score as EntityScore
 
 
 class EntityPhrase(object):

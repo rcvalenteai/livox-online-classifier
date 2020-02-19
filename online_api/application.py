@@ -2,17 +2,23 @@ from flask import Flask, request
 from flask_restplus import Resource, Api, reqparse
 from flask_restplus import inputs
 from flask_cors import CORS
-from online_api.api.imagedber import get_image
-from online_api.api.question_phrase_parser.question_parser import phrase_split, question_classifier
-from online_api.api.tester import threaded_test_cases
+from api.imagedber import get_image
+from api.question_phrase_parser.question_parser import phrase_split, question_classifier
+from api.tester import threaded_test_cases
+from api.logging import Logs, Entity
+from api.entity_phrase_parser.EntityPhrase import parse
 import json
-from online_api.api.logging import Logs, Entity
-from online_api.api.entity_phrase_parser import EntityPhrase
+
 
 application = Flask(__name__)
 application.config.SWAGGER_UI_DOC_EXPANSION = 'list'
-api = Api(application, version='1.0', title='Livox Image API',
-          description='API for image linking')
+api = Api(application, version='1.0', title='Livox List Question Classifier API',
+          description='API is for List Question classification and parsing.\n'
+                      'The two main functions of this api.\n'
+                      '- Detecting List Questions\n'
+                      '- Parsing List Entities\n'
+                      '- Use the "/listclassifier" and "/question_img_parser"\n\n'
+                      'Below you may testout the various endpoints as well as other endpoints.')
 cors = CORS(application, resources={r"/*": {"origins":"*"}})
 
 keywords = reqparse.RequestParser()
@@ -44,7 +50,7 @@ invocation_phrase.add_argument('phrase', type=str, required=True,
 
 
 api.namespaces[0].name = 'Livox API'
-api.namespaces[0].description = 'API methods for Livox List Classifier'
+api.namespaces[0].description = 'Main API methods for List Question Classifier'
 
 
 @api.route("/question_img_parser")
@@ -60,7 +66,7 @@ class QuestionImageParser(Resource):
         phrase = args.get('phrase')
         local = args.get('local')
         resp = phrase_split(phrase)
-        entities = EntityPhrase.parse(resp[1], n)
+        entities = parse(resp[1], n)
         urls = list()
         log = Logs(phrase=phrase, is_list=question_classifier(phrase), question_phrase=resp[0], list_phrase=resp[1])
         for entity in entities:
@@ -112,7 +118,7 @@ class EntityParser(Resource):
         args = list_phrase.parse_args(request)
         phrase = args.get('phrase')
         n = args.get('ngram')
-        resp = EntityPhrase.parse(phrase, n)
+        resp = parse(phrase, n)
         return resp
 
 

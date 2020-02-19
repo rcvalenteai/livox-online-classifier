@@ -7,7 +7,7 @@ EntityScore
 
 Handles scoring of ngram entities using generated/loaded dictionary vocabulary
 """
-from api.vocab
+from api.entity_phrase_parser.vocab_generator import *
 
 
 def get_ngram_score(word):
@@ -28,4 +28,4 @@ def get_ngram_score(word):
     return score
 
 
-ngram_vocab = vocab_gen.initialize_vocabulary()
+ngram_vocab = initialize_vocabulary()

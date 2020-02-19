@@ -1,6 +1,6 @@
-import online_api.api.question_phrase_parser.question_words_generator as word_gen
+from api.question_phrase_parser.question_words_generator import load_question_words
 
-pattern_dict = word_gen.load_question_words()
+pattern_dict = load_question_words()
 
 
 def phrase_split(phrase):
