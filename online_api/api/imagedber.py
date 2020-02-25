@@ -3,6 +3,7 @@ import operator
 from nltk.stem import PorterStemmer
 import json
 import datetime
+import os
 
 
 class MySQLDB(object):
@@ -17,8 +18,12 @@ class MySQLDB(object):
     """
     @classmethod
     def init_db(cls):
-        db = MySQLDB(user='livoxmqp', password='livoxmqp2019',
-                     host='livoxmqp.ckeabih2gyd2.us-east-1.rds.amazonaws.com', database='livoxmqp')
+        user = os.getenv("LIST_CLASSIFIER_USERNAME")
+        password = os.getenv("LIST_CLASSIFIER_PASS")
+        host = os.getenv("LIST_CLASSIFIER_HOST")
+        database = os.getenv("LIST_CLASSIFIER_DB")
+        db = MySQLDB(user=user, password=password,
+                     host=host, database=database)
         return db
 
     def insert(self, query, params):

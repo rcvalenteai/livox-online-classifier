@@ -1,8 +1,10 @@
 from online_api.api.question_phrase_parser import question_parser
-from online_api.api.entity_phrase_parser import EntityPhrase
+from online_api.api.entity_phrase_parser.EntityPhrase import parse
 from online_api.api import imagedber
+from online_api.helpers import load_csv
 import json
 import evaluation.plots as plotter
+import evaluation.plots as cl
 
 
 class TestQuestion(object):
@@ -27,7 +29,7 @@ class TestQuestion(object):
         return question_parser.question_classifier(self.question)
 
     def get_entities(self, ngram_threshold=2):
-        return EntityPhrase.parse(self.list_phrase, ngram_threshold)
+        return parse(self.list_phrase, ngram_threshold)
 
     def get_images(self, entities=None, db=None):
         if entities is None:
@@ -142,7 +144,7 @@ class TestQuestion(object):
 
 
 def test_all_examples(filename):
-    examples = online_api.helpers.io.load_csv(filename)
+    examples = load_csv(filename)
     results = list()
     summary = dict()
     summary['examples'] = len(examples)
@@ -212,6 +214,7 @@ def test_all_examples(filename):
     reference = dict()
     categorical = dict()
     categorical_found_all = dict()
+    grouped_vals = dict()
     for category, results2 in summary['categories'].items():
         for result in results2.keys():
             categorical.setdefault(result, dict())
@@ -219,9 +222,14 @@ def test_all_examples(filename):
             categorical[result][category] = results2[result] / results2['count']
     for key, value in categorical.items():
         plotter.plot_horizontal_dictionary_counter(value, str(key) + " across Entity types")
+        if key in ["extra", "none", "minority", "correct", "majority"]:
+            grouped_vals.setdefault(key, dict())
+            for category, percent in value.items():
+                grouped_vals[key][category] = percent
         # categorical[category] = results['correct'] / results['count']
         # categorical_found_all[category] = results['found_all'] / results['count']
-
+    print(grouped_vals)
+    plotter.plot_clustered_bar(grouped_vals, "Clustered Performance")
     for result in results:
         # print(result)
         if result['entity_classification']['results']['correct']:
