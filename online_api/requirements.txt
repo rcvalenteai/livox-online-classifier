@@ -21,7 +21,7 @@ MarkupSafe==1.1.1
 more-itertools==7.2.0
 mysql-connector-python-rf==2.2.2
 nltk==3.4.5
-numpy==1.17.2
+numpy==1.22.0
 pyrsistent==0.15.4
 python-dateutil==2.8.0
 pytz==2019.3
