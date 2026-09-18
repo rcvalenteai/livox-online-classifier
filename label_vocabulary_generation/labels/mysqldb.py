@@ -1,3 +1,4 @@
+import os
 import mysql.connector
 
 
@@ -14,7 +15,7 @@ class MySQLDB(object):
     """
     @classmethod
     def init_db(cls):
-        db = MySQLDB(user='livoxmqp', password='REMOVED_EXPOSED_CREDENTIAL',
+        db = MySQLDB(user='livoxmqp', password=os.environ["LIVOX_DB_PASSWORD"],
                      host='livoxmqp.ckeabih2gyd2.us-east-1.rds.amazonaws.com', database='livoxmqp')
         return db
 

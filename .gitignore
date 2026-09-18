@@ -1,0 +1,6 @@
+livox-google-api-key.json
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
